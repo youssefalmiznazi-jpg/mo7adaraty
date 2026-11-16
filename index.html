@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>محاضراتي | كلية الهندسة المعلوماتية - جامعة حماة</title>
+  <title>جامعتي | كلية الهندسة المعلوماتية - جامعة حماة</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -49,9 +49,9 @@
       <div class="hidden lg:flex flex-col items-center cursor-pointer" onclick="resetToHome()">
         <span class="text-2xl font-extrabold text-hamaGreen tracking-tight flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-hamaBrown"></i>
-          منصة محاضراتي
+          منصة جامعتي
         </span>
-        <span class="text-xs text-slate-500">الأرشيف الأكاديمي الموحد للطلاب</span>
+        <span class="text-xs text-slate-500">الأرشيف الأكاديمي والتبليغات الرسمية</span>
       </div>
 
       <!-- أقصى اليسار: أزرار المشاركة والـ QR + زر المدير + شعار الجامعة -->
@@ -87,7 +87,6 @@
     <div class="bg-slate-50 border-t border-slate-200">
       <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-col md:flex-row items-center justify-between gap-3">
         
-        <!-- التبويبات الرئيسية + مسار التنقل -->
         <div class="flex flex-wrap items-center justify-between md:justify-start gap-2 w-full md:w-auto">
           <div class="flex items-center gap-1.5 bg-white p-1 rounded-xl border border-slate-200 shadow-xs">
             <button id="navLecturesBtn" onclick="switchMainView('lectures')"
@@ -103,10 +102,9 @@
           <nav id="breadcrumbs" class="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm text-slate-600"></nav>
         </div>
 
-        <!-- البحث -->
         <div class="relative w-full md:w-80">
           <input type="text" id="searchInput" oninput="handleSearch(this.value)"
-                 placeholder="ابحث عن مادة، محاضرة، أو إعلان..."
+                 placeholder="ابحث عن مادة، محاضرة، طالب، أو إعلان..."
                  class="w-full pr-9 pl-3 py-1.5 text-sm bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hamaGreen/40 focus:border-hamaGreen" />
           <i class="fa-solid fa-magnifying-glass absolute right-3 top-2.5 text-slate-400 text-sm"></i>
         </div>
@@ -118,8 +116,8 @@
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
     <div id="heroBanner" class="mb-6 bg-gradient-to-l from-hamaGreen to-emerald-800 text-white rounded-2xl p-6 shadow-md flex flex-col md:flex-row items-center justify-between gap-4">
       <div>
-        <h2 class="text-xl sm:text-2xl font-extrabold mb-1">أهلاً بك في منصة "محاضراتي"</h2>
-        <p class="text-emerald-100 text-sm sm:text-base">جميع المحاضرات النظرية والعملية والإعلانات الرسمية لطلاب كلية الهندسة المعلوماتية في جامعة حماة.</p>
+        <h2 class="text-xl sm:text-2xl font-extrabold mb-1">أهلاً بك في منصة "جامعتي"</h2>
+        <p class="text-emerald-100 text-sm sm:text-base">جميع المحاضرات النظرية والعملية والإعلانات وبرامج الدوام والامتحانات لطلاب كلية الهندسة المعلوماتية - جامعة حماة.</p>
       </div>
       <div class="flex gap-3 text-center">
         <div class="bg-white/15 backdrop-blur px-4 py-2 rounded-xl">
@@ -147,7 +145,7 @@
 
   <footer class="bg-white border-t border-slate-200 py-4 mt-10">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-slate-500 gap-2">
-      <p>© 2025 منصة محاضراتي - كلية الهندسة المعلوماتية، جامعة حماة.</p>
+      <p>© 2025 منصة جامعتي - كلية الهندسة المعلوماتية، جامعة حماة.</p>
       <p>صُممت لتسهيل الوصول للمعرفة بأسرع وأخف صورة.</p>
     </div>
   </footer>
@@ -201,7 +199,7 @@
 
   <!-- نافذة لوحة تحكم المدير -->
   <div id="adminModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white rounded-2xl w-full max-w-3xl shadow-2xl overflow-hidden my-8">
+    <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden my-8">
       <div class="px-5 py-4 bg-hamaBrown text-white flex items-center justify-between">
         <h3 class="font-bold text-lg flex items-center gap-2">
           <i class="fa-solid fa-user-shield"></i> لوحة تحكم المدير
@@ -213,7 +211,7 @@
 
       <!-- نموذج تسجيل الدخول -->
       <div id="adminLoginForm" class="p-6 space-y-4">
-        <p class="text-sm text-slate-600">سجّل الدخول بحساب المدير الذي أنشأته في Supabase لإدارة المواد والمحاضرات والإعلانات.</p>
+        <p class="text-sm text-slate-600">سجّل الدخول بحساب المدير لإضافة وتعديل وحذف المواد والمحاضرات والإعلانات.</p>
         <div>
           <label class="block text-sm font-semibold mb-1">البريد الإلكتروني</label>
           <input type="email" id="adminEmail" placeholder="example@gmail.com" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-hamaGreen/40 outline-none">
@@ -228,19 +226,22 @@
       </div>
 
       <!-- لوحة الإدارة -->
-      <div id="adminDashboardContent" class="hidden p-6 space-y-5 max-h-[80vh] overflow-y-auto">
+      <div id="adminDashboardContent" class="hidden p-6 space-y-5 max-h-[82vh] overflow-y-auto">
         <div class="flex flex-wrap items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 p-3 rounded-xl">
-          <span class="text-sm font-bold text-emerald-800"><i class="fa-solid fa-circle-check ml-1"></i> أنت متصل الآن كمدير للمنصة</span>
+          <span class="text-sm font-bold text-emerald-800"><i class="fa-solid fa-circle-check ml-1"></i> أنت متصل الآن كمدير لمنصة جامعتي</span>
           <button onclick="logoutAdmin()" class="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1.5 rounded-lg font-bold">تسجيل خروج</button>
         </div>
 
         <!-- تبويبات لوحة المدير -->
-        <div class="flex gap-2 border-b pb-3">
-          <button id="adminTabBtnLectures" onclick="switchAdminTab('lectures')" class="px-4 py-2 rounded-xl text-sm font-bold bg-hamaGreen text-white transition">
-            <i class="fa-solid fa-book ml-1"></i> المواد والمحاضرات
+        <div class="flex flex-wrap gap-2 border-b pb-3">
+          <button id="adminTabBtnLectures" onclick="switchAdminTab('lectures')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-hamaGreen text-white transition">
+            <i class="fa-solid fa-book ml-1"></i> إضافة مادة / محاضرة
           </button>
-          <button id="adminTabBtnAnnouncements" onclick="switchAdminTab('announcements')" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+          <button id="adminTabBtnAnnouncements" onclick="switchAdminTab('announcements')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
             <i class="fa-solid fa-bullhorn ml-1"></i> نشر إعلان جديد
+          </button>
+          <button id="adminTabBtnManage" onclick="switchAdminTab('manage')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+            <i class="fa-solid fa-sliders ml-1"></i> إدارة وتعديل وحذف الكل
           </button>
         </div>
 
@@ -305,7 +306,21 @@
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">اختر ملف PDF أو صورة من جهازك:</label>
-              <input type="file" id="lecFile" accept=".pdf,image/*" class="w-full text-xs border rounded-lg p-1.5 bg-white">
+              <input type="file" id="lecFile" accept=".pdf,image/*" onchange="handleFileSelect('lecFile', 'lecFilePreviewBar', 'lecFileName')" class="w-full text-xs border rounded-lg p-1.5 bg-white">
+              <div id="lecFilePreviewBar" class="hidden mt-2 items-center justify-between gap-2 bg-white border border-emerald-200 rounded-lg px-3 py-1.5 text-xs">
+                <span class="font-bold text-slate-700 truncate flex items-center gap-1.5">
+                  <i class="fa-solid fa-file-circle-check text-hamaGreen"></i>
+                  <span id="lecFileName"></span>
+                </span>
+                <div class="flex items-center gap-1 shrink-0">
+                  <button type="button" onclick="triggerFileReplace('lecFile')" class="text-blue-600 hover:bg-blue-50 px-2 py-1 rounded font-bold" title="تعديل / تغيير الملف">
+                    <i class="fa-solid fa-pen-to-square"></i> تعديل
+                  </button>
+                  <button type="button" onclick="clearSelectedFile('lecFile', 'lecFilePreviewBar')" class="text-red-600 hover:bg-red-50 px-2 py-1 rounded font-bold" title="حذف الملف">
+                    <i class="fa-solid fa-trash"></i> حذف
+                  </button>
+                </div>
+              </div>
             </div>
             <button id="addLecBtn" onclick="addLecture()" class="w-full bg-hamaBrown hover:bg-amber-950 text-white text-sm font-bold py-2 rounded-lg">رفع ونشر المحاضرة</button>
           </div>
@@ -318,16 +333,18 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">نوع الإعلان:</label>
-              <select id="annType" onchange="updateAnnouncementFormFields()" class="w-full border rounded-lg px-3 py-2 text-sm bg-white font-semibold">
-                <option value="meeting">إعلان عن اجتماع</option>
-                <option value="holiday">إعلان عن عطلة رسمية</option>
-                <option value="makeup">إعلان عن محاضرة تعويضية</option>
-                <option value="new_year">إعلان عن بدء عام دراسي جديد</option>
-                <option value="summon">طلب استدعاء طالب / طالبة</option>
-                <option value="absence">إعلان عن غياب دكتور / أستاذ</option>
-                <option value="quiz">إعلان عن مذاكرة (رفع صورة)</option>
-                <option value="schedule">برنامج الدوام الدراسي (صورة أو PDF)</option>
-              </select>
+              <div class="flex items-center gap-1">
+                <select id="annType" onchange="updateAnnouncementFormFields()" class="flex-1 border rounded-lg px-2.5 py-2 text-sm bg-white font-semibold"></select>
+                <button type="button" onclick="openOptionModal('announcement_type', 'add')" class="bg-hamaGreen hover:bg-emerald-700 text-white px-2.5 py-2 rounded-lg text-xs font-bold" title="إضافة نوع إعلان جديد">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <button type="button" onclick="openOptionModal('announcement_type', 'edit')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-2.5 py-2 rounded-lg text-xs font-bold" title="تعديل النوع المحدد">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button type="button" onclick="deleteSelectedOption('announcement_type')" class="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-2.5 py-2 rounded-lg text-xs font-bold" title="حذف النوع المحدد">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">تاريخ الإعلان:</label>
@@ -337,40 +354,50 @@
 
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">عنوان الإعلان:</label>
-            <input type="text" id="annTitle" placeholder="مثال: عطلة رسمية بمناسبة... / برنامج دوام السنة الثانية" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+            <input type="text" id="annTitle" placeholder="مثال: برنامج دوام السنة الثانية / استدعاء طلاب / إعلان مذاكرة" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
           </div>
 
-          <!-- حقول استدعاء طالب -->
-          <div id="annSummonFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 bg-amber-50 p-3 rounded-xl border border-amber-200">
+          <!-- حقول استدعاء طالب / عدة طلاب -->
+          <div id="annSummonFields" class="hidden space-y-3 bg-amber-50 p-3.5 rounded-xl border border-amber-200">
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">اسم الطالب / الطالبة:</label>
-              <input type="text" id="annStudentName" placeholder="الاسم الثلاثي للطالب" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="block text-xs font-bold text-slate-700">أسماء الطلاب المستدعين (يمكن إضافة أكثر من طالب):</label>
+                <button type="button" onclick="addStudentInputRow()" class="text-xs bg-hamaGreen hover:bg-emerald-700 text-white px-2.5 py-1 rounded-lg font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-plus"></i> إضافة طالب آخر
+                </button>
+              </div>
+              <div id="annStudentsList" class="space-y-2"></div>
             </div>
+
             <div>
               <label class="block text-xs font-bold text-slate-700 mb-1">الجهة المطلوب مراجعتها:</label>
-              <select id="annDepartment" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
-                <option value="شؤون الطلاب">شؤون الطلاب</option>
-                <option value="قسم الامتحانات">قسم الامتحانات</option>
-                <option value="العميد">العميد</option>
-                <option value="نائب العميد">نائب العميد</option>
-                <option value="سكرتاريا العميد">سكرتاريا العميد</option>
-                <option value="رئاسة القسم">رئاسة القسم</option>
-              </select>
+              <div class="flex items-center gap-1">
+                <select id="annDepartment" class="flex-1 border rounded-lg px-3 py-2 text-sm bg-white"></select>
+                <button type="button" onclick="openOptionModal('department', 'add')" class="bg-hamaGreen hover:bg-emerald-700 text-white px-2.5 py-2 rounded-lg text-xs font-bold" title="إضافة جهة / موظف جديد">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <button type="button" onclick="openOptionModal('department', 'edit')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-2.5 py-2 rounded-lg text-xs font-bold" title="تعديل الجهة المحددة">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button type="button" onclick="deleteSelectedOption('department')" class="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-2.5 py-2 rounded-lg text-xs font-bold" title="حذف الجهة المحددة">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- حقول غياب دكتور -->
+          <!-- حقول غياب دكتور / مدرس -->
           <div id="annDoctorField" class="hidden bg-red-50 p-3 rounded-xl border border-red-200">
-            <label class="block text-xs font-bold text-slate-700 mb-1">اسم الدكتور / الأستاذ:</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1">اسم الدكتور / المدرس:</label>
             <input type="text" id="annDoctorName" placeholder="مثال: د. أحمد ..." class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
           </div>
 
-          <!-- حقول السنة والفصل والمادة -->
-          <div id="annAcademicFields" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-            <div>
+          <!-- حقول السنة والفصل والقسم والمادة ونوع الامتحان -->
+          <div id="annAcademicFields" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
+            <div id="annYearWrapper">
               <label class="block text-xs font-bold text-slate-700 mb-1">السنة الدراسية:</label>
               <select id="annTargetYear" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                <option value="">الكل / غير محدد</option>
+                <option value="">اختر السنة...</option>
                 <option value="1">السنة الأولى</option>
                 <option value="2">السنة الثانية</option>
                 <option value="3">السنة الثالثة</option>
@@ -381,9 +408,26 @@
             <div id="annSemesterWrapper">
               <label class="block text-xs font-bold text-slate-700 mb-1">الفصل الدراسي:</label>
               <select id="annTargetSemester" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                <option value="">غير محدد</option>
+                <option value="">اختر الفصل...</option>
                 <option value="1">الفصل الأول</option>
                 <option value="2">الفصل الثاني</option>
+              </select>
+            </div>
+            <div id="annSectionWrapper">
+              <label class="block text-xs font-bold text-slate-700 mb-1">القسم (نظري / عملي):</label>
+              <select id="annSection" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+                <option value="">اختر القسم...</option>
+                <option value="theoretical">القسم النظري</option>
+                <option value="practical">القسم العملي</option>
+                <option value="both">نظري وعملي</option>
+              </select>
+            </div>
+            <div id="annExamTypeWrapper" class="hidden">
+              <label class="block text-xs font-bold text-slate-700 mb-1">نوع الامتحان:</label>
+              <select id="annExamType" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+                <option value="">اختر نوع الامتحان...</option>
+                <option value="theoretical">امتحان نظري</option>
+                <option value="practical">امتحان عملي</option>
               </select>
             </div>
             <div id="annSubjectWrapper">
@@ -397,15 +441,34 @@
             <textarea id="annDetails" rows="3" placeholder="اكتب التفاصيل الكاملة هنا (المكان، الزمان، الملاحظات...)" class="w-full border rounded-lg px-3 py-2 text-sm bg-white"></textarea>
           </div>
 
-          <!-- رفع مرفق (صورة أو PDF) -->
+          <!-- رفع مرفق (صورة أو PDF) مع أزرار تعديل وحذف بجانب الاسم -->
           <div>
             <label id="annFileLabel" class="block text-xs font-bold text-slate-600 mb-1">إرفاق صورة أو ملف PDF (اختياري):</label>
-            <input type="file" id="annFile" accept=".pdf,image/*" class="w-full text-xs border rounded-lg p-1.5 bg-white">
+            <input type="file" id="annFile" accept=".pdf,image/*" onchange="handleFileSelect('annFile', 'annFilePreviewBar', 'annFileName')" class="w-full text-xs border rounded-lg p-1.5 bg-white">
+            <div id="annFilePreviewBar" class="hidden mt-2 items-center justify-between gap-2 bg-white border border-emerald-200 rounded-lg px-3 py-2 text-xs">
+              <span class="font-bold text-slate-700 truncate flex items-center gap-1.5">
+                <i class="fa-solid fa-file-circle-check text-hamaGreen"></i>
+                <span id="annFileName"></span>
+              </span>
+              <div class="flex items-center gap-1 shrink-0">
+                <button type="button" onclick="triggerFileReplace('annFile')" class="text-blue-600 hover:bg-blue-50 px-2 py-1 rounded font-bold" title="تعديل / تغيير الملف">
+                  <i class="fa-solid fa-pen-to-square"></i> تعديل
+                </button>
+                <button type="button" onclick="clearSelectedFile('annFile', 'annFilePreviewBar')" class="text-red-600 hover:bg-red-50 px-2 py-1 rounded font-bold" title="حذف الملف">
+                  <i class="fa-solid fa-trash"></i> حذف
+                </button>
+              </div>
+            </div>
           </div>
 
           <button id="addAnnBtn" onclick="addAnnouncement()" class="w-full bg-hamaGreen hover:bg-emerald-700 text-white text-sm font-bold py-2.5 rounded-lg transition">
             نشر الإعلان الآن
           </button>
+        </div>
+
+        <!-- تبويب 3: إدارة وتعديل وحذف الكل من داخل لوحة التحكم -->
+        <div id="adminTabManage" class="hidden space-y-5">
+          <div id="adminManageContainer"></div>
         </div>
       </div>
     </div>
@@ -413,7 +476,7 @@
 
   <!-- نافذة التعديل (للمواد والمحاضرات والإعلانات) -->
   <div id="editModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden my-8">
+    <div class="bg-white rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden my-8">
       <div class="px-5 py-3.5 bg-slate-800 text-white flex items-center justify-between">
         <h3 id="editModalTitle" class="font-bold text-base flex items-center gap-2">
           <i class="fa-solid fa-pen-to-square"></i> تعديل
@@ -422,24 +485,48 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      <div id="editModalBody" class="p-5 space-y-4 max-h-[80vh] overflow-y-auto"></div>
+      <div id="editModalBody" class="p-5 space-y-4 max-h-[82vh] overflow-y-auto"></div>
     </div>
   </div>
 
+  <!-- نافذة إضافة / تعديل خيار (نوع إعلان أو جهة) -->
+  <div id="optionModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden">
+      <div class="px-5 py-3.5 bg-hamaGreen text-white flex items-center justify-between">
+        <h3 id="optionModalTitle" class="font-bold text-sm sm:text-base">إضافة عنصر جديد</h3>
+        <button onclick="closeOptionModal()" class="text-white/80 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-5 space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">الاسم:</label>
+          <input type="text" id="optionInputLabel" placeholder="اكتب الاسم هنا..." class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-hamaGreen/40 outline-none">
+        </div>
+        <div class="flex gap-2">
+          <button id="optionSaveBtn" onclick="saveOptionModal()" class="flex-1 bg-hamaGreen hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-sm">حفظ</button>
+          <button onclick="closeOptionModal()" class="px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 rounded-lg text-sm">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
     const SUPABASE_URL = 'https://zesmqhhqhbinhhmmtgkk.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inplc21xaGhxaGJpbmhobW10Z2trIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NzY4MzEsImV4cCI6MjExMDM1MjgzMX0.PokJmQ1aWoZSGoq5C5oEyaYsyB_MLH2nY-nxv8lUwUE';
     const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    const FALLBACK_PUBLIC_URL = 'https://mo7adaraty-hama.netlify.app';
+    const FALLBACK_PUBLIC_URL = 'https://youssefalmiznazi-jpg.github.io./mo7adaraty/';
 
     let subjects = [];
     let lectures = [];
     let announcements = [];
+    let customOptions = [];
     let currentUser = null;
+    let optionModalState = { kind: null, mode: null, editId: null };
+    let removeExistingAnnFile = false;
 
     let state = {
-      activeView: 'lectures', // 'lectures' | 'announcements'
+      activeView: 'lectures',
       year: null,
       semester: null,
       subjectId: null,
@@ -450,17 +537,30 @@
     };
 
     const yearNames = { 1: 'السنة الأولى', 2: 'السنة الثانية', 3: 'السنة الثالثة', 4: 'السنة الرابعة', 5: 'السنة الخامسة' };
+    const sectionLabels = { theoretical: 'القسم النظري', practical: 'القسم العملي', both: 'نظري وعملي' };
+    const examTypeLabels = { theoretical: 'امتحان نظري', practical: 'امتحان عملي' };
 
-    const announcementMeta = {
-      meeting:  { label: 'اجتماع',           icon: 'fa-users',            badge: 'bg-blue-100 text-blue-800 border-blue-200' },
-      holiday:  { label: 'عطلة رسمية',       icon: 'fa-umbrella-beach',   badge: 'bg-emerald-100 text-hamaGreen border-emerald-200' },
-      makeup:   { label: 'محاضرة تعويضية',   icon: 'fa-chalkboard',       badge: 'bg-indigo-100 text-indigo-800 border-indigo-200' },
-      new_year: { label: 'بدء عام دراسي',    icon: 'fa-graduation-cap',   badge: 'bg-teal-100 text-teal-800 border-teal-200' },
-      summon:   { label: 'استدعاء طالب',     icon: 'fa-user-clock',       badge: 'bg-amber-100 text-amber-900 border-amber-300' },
-      absence:  { label: 'غياب دكتور/أستاذ', icon: 'fa-user-slash',       badge: 'bg-red-100 text-red-800 border-red-200' },
-      quiz:     { label: 'إعلان مذاكرة',     icon: 'fa-file-pen',         badge: 'bg-purple-100 text-purple-800 border-purple-200' },
-      schedule: { label: 'برنامج الدوام',    icon: 'fa-calendar-week',    badge: 'bg-emerald-50 text-hamaBrown border-amber-300' }
+    const builtInAnnouncementMeta = {
+      meeting:       { label: 'إعلان عن اجتماع',            icon: 'fa-users',          badge: 'bg-blue-100 text-blue-800 border-blue-200' },
+      holiday:       { label: 'إعلان عن عطلة رسمية',        icon: 'fa-umbrella-beach', badge: 'bg-emerald-100 text-hamaGreen border-emerald-200' },
+      makeup:        { label: 'إعلان عن محاضرة تعويضية',    icon: 'fa-chalkboard',     badge: 'bg-indigo-100 text-indigo-800 border-indigo-200' },
+      new_year:      { label: 'إعلان عن بدء عام دراسي جديد', icon: 'fa-graduation-cap', badge: 'bg-teal-100 text-teal-800 border-teal-200' },
+      new_semester:  { label: 'إعلان عن بدء فصل دراسي جديد', icon: 'fa-calendar-plus',  badge: 'bg-cyan-100 text-cyan-800 border-cyan-200' },
+      summon:        { label: 'طلب استدعاء طالب / طالبة',   icon: 'fa-user-clock',     badge: 'bg-amber-100 text-amber-900 border-amber-300' },
+      absence:       { label: 'إعلان عن غياب دكتور / مدرس', icon: 'fa-user-slash',     badge: 'bg-red-100 text-red-800 border-red-200' },
+      quiz:          { label: 'إعلان عن مذاكرة',            icon: 'fa-file-pen',       badge: 'bg-purple-100 text-purple-800 border-purple-200' },
+      schedule:      { label: 'برنامج الدوام الدراسي',       icon: 'fa-calendar-week',  badge: 'bg-emerald-50 text-hamaBrown border-amber-300' },
+      exam_schedule: { label: 'إعلان برنامج الامتحان',      icon: 'fa-file-signature', badge: 'bg-rose-100 text-rose-800 border-rose-200' }
     };
+
+    function getAnnouncementMeta(typeKey) {
+      if (builtInAnnouncementMeta[typeKey]) return builtInAnnouncementMeta[typeKey];
+      const custom = customOptions.find(o => o.kind === 'announcement_type' && ('custom:' + o.id === typeKey || o.label === typeKey));
+      if (custom) {
+        return { label: custom.label, icon: 'fa-bullhorn', badge: 'bg-slate-100 text-slate-800 border-slate-300' };
+      }
+      return { label: typeKey || 'إعلان', icon: 'fa-bullhorn', badge: 'bg-slate-100 text-slate-800 border-slate-300' };
+    }
 
     function getPlatformUrl() {
       if (window.location.protocol.startsWith('http')) {
@@ -484,10 +584,11 @@
     }
 
     async function fetchData() {
-      const [subRes, lecRes, annRes] = await Promise.all([
+      const [subRes, lecRes, annRes, optRes] = await Promise.all([
         sb.from('subjects').select('*').order('created_at', { ascending: true }),
         sb.from('lectures').select('*').order('lecture_number', { ascending: true }),
-        sb.from('announcements').select('*').order('announcement_date', { ascending: false }).order('created_at', { ascending: false })
+        sb.from('announcements').select('*').order('announcement_date', { ascending: false }).order('created_at', { ascending: false }),
+        sb.from('custom_options').select('*').order('created_at', { ascending: true })
       ]);
 
       if (subRes.error) alert('حدث خطأ في جلب المواد: ' + subRes.error.message);
@@ -495,9 +596,44 @@
 
       if (!lecRes.error) lectures = lecRes.data || [];
       if (!annRes.error) announcements = annRes.data || [];
+      if (!optRes.error) customOptions = optRes.data || [];
 
+      populateDynamicSelects();
       updateStats();
       render();
+      if (currentUser) renderAdminManageTab();
+    }
+
+    function populateDynamicSelects() {
+      const typeSelect = document.getElementById('annType');
+      if (typeSelect) {
+        const prevType = typeSelect.value;
+        const customTypes = customOptions.filter(o => o.kind === 'announcement_type');
+        let html = Object.entries(builtInAnnouncementMeta)
+          .map(([key, meta]) => `<option value="${key}">${meta.label}</option>`)
+          .join('');
+        html += customTypes
+          .map(o => `<option value="custom:${o.id}">${o.label}</option>`)
+          .join('');
+        typeSelect.innerHTML = html;
+        if (prevType && [...typeSelect.options].some(op => op.value === prevType)) {
+          typeSelect.value = prevType;
+        }
+      }
+
+      const deptSelect = document.getElementById('annDepartment');
+      if (deptSelect) {
+        const prevDept = deptSelect.value;
+        const depts = customOptions.filter(o => o.kind === 'department');
+        if (depts.length === 0) {
+          deptSelect.innerHTML = `<option value="">لا توجد جهات — اضغط + للإضافة</option>`;
+        } else {
+          deptSelect.innerHTML = depts.map(d => `<option value="${d.label}" data-id="${d.id}">${d.label}</option>`).join('');
+          if (prevDept && [...deptSelect.options].some(op => op.value === prevDept)) {
+            deptSelect.value = prevDept;
+          }
+        }
+      }
     }
 
     function updateStats() {
@@ -559,7 +695,6 @@
         return;
       }
 
-      // 1. السنوات
       if (!state.year) {
         hero.classList.remove('hidden');
         const latestAnns = announcements.slice(0, 3);
@@ -576,7 +711,7 @@
               </div>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 ${latestAnns.map(ann => {
-                  const meta = announcementMeta[ann.type] || announcementMeta.meeting;
+                  const meta = getAnnouncementMeta(ann.type);
                   return `
                     <div onclick="switchMainView('announcements')" class="cursor-pointer border border-slate-200 hover:border-hamaBrown rounded-xl p-3 bg-slate-50/70 hover:bg-white transition">
                       <div class="flex items-center justify-between gap-2 mb-1.5">
@@ -586,7 +721,7 @@
                         <span class="text-[11px] text-slate-400">${ann.announcement_date || ''}</span>
                       </div>
                       <h4 class="font-bold text-sm text-slate-800 line-clamp-1">${ann.title}</h4>
-                      ${ann.student_name ? `<p class="text-xs text-amber-800 font-semibold mt-1">الطالب: ${ann.student_name} (${ann.department || ''})</p>` : ''}
+                      ${ann.student_name ? `<p class="text-xs text-amber-800 font-semibold mt-1 line-clamp-1">الطلاب: ${ann.student_name}</p>` : ''}
                       ${ann.doctor_name ? `<p class="text-xs text-red-700 font-semibold mt-1">الدكتور: ${ann.doctor_name}</p>` : ''}
                     </div>
                   `;
@@ -618,7 +753,6 @@
 
       hero.classList.add('hidden');
 
-      // 2. الفصول
       if (!state.semester) {
         container.innerHTML = `
           <h3 class="text-lg font-extrabold text-slate-700 mb-4">${yearNames[state.year]} — اختر الفصل الدراسي:</h3>
@@ -642,7 +776,6 @@
         return;
       }
 
-      // 3. المواد
       if (!state.subjectId) {
         const filteredSubs = subjects.filter(s => s.year === state.year && s.semester === state.semester);
         container.innerHTML = `
@@ -685,7 +818,6 @@
         return;
       }
 
-      // 4. داخل المادة
       const subject = subjects.find(s => s.id === state.subjectId);
       const theoLecs = lectures.filter(l => l.subject_id === state.subjectId && l.category === 'theoretical');
       const pracLecs = lectures.filter(l => l.subject_id === state.subjectId && l.category === 'practical');
@@ -764,13 +896,29 @@
       `;
     }
 
-    // --- عرض قسم الإعلانات ---
+    // --- عرض الإعلانات ---
     function renderAnnouncementsView(container) {
       const filtered = announcements.filter(ann => {
         const matchType = state.annFilterType === 'all' || ann.type === state.annFilterType;
         const matchYear = state.annFilterYear === 'all' || String(ann.target_year) === String(state.annFilterYear);
         return matchType && matchYear;
       });
+
+      const customTypes = customOptions.filter(o => o.kind === 'announcement_type');
+      const filters = [
+        { key: 'all', label: 'الكل' },
+        { key: 'schedule', label: 'برامج الدوام' },
+        { key: 'exam_schedule', label: 'برامج الامتحانات' },
+        { key: 'quiz', label: 'المذاكرات' },
+        { key: 'summon', label: 'الاستدعاءات' },
+        { key: 'absence', label: 'غياب الدكاترة' },
+        { key: 'makeup', label: 'محاضرات تعويضية' },
+        { key: 'holiday', label: 'العطل' },
+        { key: 'meeting', label: 'الاجتماعات' },
+        { key: 'new_semester', label: 'بدء الفصل' },
+        { key: 'new_year', label: 'العام الدراسي' },
+        ...customTypes.map(ct => ({ key: 'custom:' + ct.id, label: ct.label }))
+      ];
 
       container.innerHTML = `
         <div class="space-y-5">
@@ -779,7 +927,7 @@
               <h2 class="text-xl sm:text-2xl font-extrabold text-hamaBrown flex items-center gap-2">
                 <i class="fa-solid fa-bullhorn"></i> لوحة الإعلانات والتبليغات الرسمية
               </h2>
-              <p class="text-xs sm:text-sm text-slate-500 mt-1">متابعة مواعيد المذاكرات، برامج الدوام، غيابات الأساتذة، الاستدعاءات، والعطل الرسمية.</p>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">متابعة مواعيد المذاكرات، برامج الدوام والامتحانات، غيابات الأساتذة، الاستدعاءات، والعطل.</p>
             </div>
             ${currentUser ? `
               <button onclick="openAdminModal(null, null, 'announcements')" class="bg-hamaGreen hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 self-start md:self-auto shadow-sm transition">
@@ -788,20 +936,9 @@
             ` : ''}
           </div>
 
-          <!-- شريط الفلترة -->
           <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             <div class="flex flex-wrap gap-1.5">
-              ${[
-                { key: 'all', label: 'الكل' },
-                { key: 'schedule', label: 'برامج الدوام' },
-                { key: 'quiz', label: 'المذاكرات' },
-                { key: 'summon', label: 'الاستدعاءات' },
-                { key: 'absence', label: 'غياب الدكاترة' },
-                { key: 'makeup', label: 'محاضرات تعويضية' },
-                { key: 'holiday', label: 'العطل' },
-                { key: 'meeting', label: 'الاجتماعات' },
-                { key: 'new_year', label: 'العام الدراسي' }
-              ].map(f => `
+              ${filters.map(f => `
                 <button onclick="state.annFilterType='${f.key}'; render();"
                         class="px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.annFilterType === f.key ? 'bg-hamaBrown text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
                   ${f.label}
@@ -809,7 +946,7 @@
               `).join('')}
             </div>
 
-            <select onchange="state.annFilterYear=this.value; render();" class="border border-slate-300 rounded-lg px-3 py-1.5 text-xs sm:text-sm bg-white font-semibold">
+            <select onchange="state.annFilterYear=this.value; render();" class="border border-slate-300 rounded-lg px-3 py-1.5 text-xs sm:text-sm bg-white font-semibold shrink-0">
               <option value="all" ${state.annFilterYear === 'all' ? 'selected' : ''}>كل السنوات</option>
               <option value="1" ${state.annFilterYear === '1' ? 'selected' : ''}>السنة الأولى</option>
               <option value="2" ${state.annFilterYear === '2' ? 'selected' : ''}>السنة الثانية</option>
@@ -819,7 +956,6 @@
             </select>
           </div>
 
-          <!-- قائمة الإعلانات -->
           ${filtered.length === 0 ? `
             <div class="bg-white rounded-2xl border p-10 text-center text-slate-500">
               <i class="fa-regular fa-bell-slash text-3xl text-slate-300 mb-2"></i>
@@ -835,7 +971,7 @@
     }
 
     function renderAnnouncementCard(ann) {
-      const meta = announcementMeta[ann.type] || announcementMeta.meeting;
+      const meta = getAnnouncementMeta(ann.type);
       return `
         <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-4">
           <div class="space-y-3">
@@ -850,13 +986,14 @@
 
             <h3 class="text-lg font-extrabold text-slate-800">${ann.title}</h3>
 
-            <!-- بيانات مخصصة حسب النوع -->
             <div class="flex flex-wrap gap-2 text-xs">
-              ${ann.student_name ? `<span class="bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-lg font-bold"><i class="fa-solid fa-user ml-1"></i> الطالب: ${ann.student_name}</span>` : ''}
+              ${ann.student_name ? `<span class="bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-lg font-bold"><i class="fa-solid fa-users ml-1"></i> الطلاب: ${ann.student_name}</span>` : ''}
               ${ann.department ? `<span class="bg-slate-100 text-slate-700 border px-2.5 py-1 rounded-lg font-bold"><i class="fa-solid fa-building-columns ml-1"></i> الجهة: ${ann.department}</span>` : ''}
               ${ann.doctor_name ? `<span class="bg-red-50 text-red-800 border border-red-200 px-2.5 py-1 rounded-lg font-bold"><i class="fa-solid fa-chalkboard-user ml-1"></i> الدكتور: ${ann.doctor_name}</span>` : ''}
               ${ann.target_year ? `<span class="bg-emerald-50 text-hamaGreen border border-emerald-200 px-2.5 py-1 rounded-lg font-bold">${yearNames[ann.target_year]}</span>` : ''}
               ${ann.target_semester ? `<span class="bg-slate-100 text-slate-700 border px-2.5 py-1 rounded-lg font-bold">${ann.target_semester === 1 ? 'الفصل الأول' : 'الفصل الثاني'}</span>` : ''}
+              ${ann.section && sectionLabels[ann.section] ? `<span class="bg-indigo-50 text-indigo-800 border border-indigo-200 px-2.5 py-1 rounded-lg font-bold">${sectionLabels[ann.section]}</span>` : ''}
+              ${ann.exam_type && examTypeLabels[ann.exam_type] ? `<span class="bg-rose-50 text-rose-800 border border-rose-200 px-2.5 py-1 rounded-lg font-bold">${examTypeLabels[ann.exam_type]}</span>` : ''}
               ${ann.subject_name ? `<span class="bg-purple-50 text-purple-800 border border-purple-200 px-2.5 py-1 rounded-lg font-bold"><i class="fa-solid fa-book ml-1"></i> ${ann.subject_name}</span>` : ''}
             </div>
 
@@ -969,6 +1106,36 @@
     function selectSubject(id) { state.subjectId = id; state.category = 'theoretical'; render(); }
     function selectCategory(cat) { state.category = cat; render(); }
 
+    // --- دوال التحكم في الملف المختار (معاينة الاسم + تعديل + حذف) ---
+    function handleFileSelect(inputId, barId, nameId) {
+      const input = document.getElementById(inputId);
+      const bar = document.getElementById(barId);
+      const nameEl = document.getElementById(nameId);
+      if (input.files && input.files[0]) {
+        nameEl.textContent = input.files[0].name;
+        bar.classList.remove('hidden');
+        bar.classList.add('flex');
+      } else {
+        bar.classList.add('hidden');
+        bar.classList.remove('flex');
+      }
+    }
+
+    function triggerFileReplace(inputId) {
+      const input = document.getElementById(inputId);
+      if (input) input.click();
+    }
+
+    function clearSelectedFile(inputId, barId) {
+      const input = document.getElementById(inputId);
+      const bar = document.getElementById(barId);
+      if (input) input.value = '';
+      if (bar) {
+        bar.classList.add('hidden');
+        bar.classList.remove('flex');
+      }
+    }
+
     // --- دوال QR ومشاركة الرابط ---
     function openQRModal() {
       const url = getPlatformUrl();
@@ -996,7 +1163,7 @@
       const url = getPlatformUrl();
       try {
         await navigator.clipboard.writeText(url);
-        alert('تم نسخ رابط المنصة بنجاح:\n' + url);
+        alert('تم نسخ رابط منصة جامعتي بنجاح:\n' + url);
       } catch {
         prompt('انسخ رابط المنصة من هنا:', url);
       }
@@ -1010,7 +1177,7 @@
       if (!dataUrl) return;
       const a = document.createElement('a');
       a.href = dataUrl;
-      a.download = 'mo7adaraty-qr.png';
+      a.download = 'jameaty-qr.png';
       a.click();
     }
 
@@ -1019,8 +1186,8 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: 'منصة محاضراتي - كلية الهندسة المعلوماتية، جامعة حماة',
-            text: 'تصفح المحاضرات والإعلانات الرسمية عبر منصة محاضراتي:',
+            title: 'منصة جامعتي - كلية الهندسة المعلوماتية، جامعة حماة',
+            text: 'تصفح المحاضرات والإعلانات الرسمية عبر منصة جامعتي:',
             url
           });
         } catch (err) {
@@ -1078,20 +1245,35 @@
     function switchAdminTab(tab) {
       const lecTab = document.getElementById('adminTabLectures');
       const annTab = document.getElementById('adminTabAnnouncements');
+      const mngTab = document.getElementById('adminTabManage');
+
       const lecBtn = document.getElementById('adminTabBtnLectures');
       const annBtn = document.getElementById('adminTabBtnAnnouncements');
+      const mngBtn = document.getElementById('adminTabBtnManage');
+
+      const inactiveClass = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+
+      lecTab.classList.add('hidden');
+      annTab.classList.add('hidden');
+      mngTab.classList.add('hidden');
+      lecBtn.className = inactiveClass;
+      annBtn.className = inactiveClass;
+      mngBtn.className = inactiveClass;
 
       if (tab === 'lectures') {
         lecTab.classList.remove('hidden');
-        annTab.classList.add('hidden');
-        lecBtn.className = 'px-4 py-2 rounded-xl text-sm font-bold bg-hamaGreen text-white transition';
-        annBtn.className = 'px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
-      } else {
-        lecTab.classList.add('hidden');
+        lecBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-hamaGreen text-white transition';
+      } else if (tab === 'announcements') {
         annTab.classList.remove('hidden');
-        lecBtn.className = 'px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
-        annBtn.className = 'px-4 py-2 rounded-xl text-sm font-bold bg-hamaBrown text-white transition';
+        annBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-hamaBrown text-white transition';
+        if (document.querySelectorAll('.ann-student-input').length === 0) {
+          resetStudentInputRows();
+        }
         updateAnnouncementFormFields();
+      } else {
+        mngTab.classList.remove('hidden');
+        mngBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-white transition';
+        renderAdminManageTab();
       }
     }
 
@@ -1109,10 +1291,47 @@
         if (preCat) document.getElementById('lecCat').value = preCat;
         document.getElementById('lecDate').valueAsDate = new Date();
         document.getElementById('annDate').valueAsDate = new Date();
+        populateDynamicSelects();
+        resetStudentInputRows();
         switchAdminTab(activeTab);
       } else {
         document.getElementById('adminLoginForm').classList.remove('hidden');
         document.getElementById('adminDashboardContent').classList.add('hidden');
+      }
+    }
+
+    // --- إدارة صفوف أسماء الطلاب المتعددة ---
+    function resetStudentInputRows(containerId = 'annStudentsList', values = ['']) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      const list = values.length > 0 ? values : [''];
+      list.forEach(v => addStudentInputRow(v, containerId));
+    }
+
+    function addStudentInputRow(val = '', containerId = 'annStudentsList') {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const row = document.createElement('div');
+      row.className = 'flex items-center gap-1.5';
+      const inputClass = containerId === 'editAnnStudentsList' ? 'edit-ann-student-input' : 'ann-student-input';
+      row.innerHTML = `
+        <input type="text" class="${inputClass} flex-1 border rounded-lg px-3 py-2 text-sm bg-white" placeholder="الاسم الثلاثي للطالب / الطالبة">
+        <button type="button" onclick="removeStudentRow(this, '${containerId}')" class="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-2.5 py-2 rounded-lg text-xs font-bold" title="حذف الاسم">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      `;
+      row.querySelector('input').value = val;
+      container.appendChild(row);
+    }
+
+    function removeStudentRow(btn, containerId = 'annStudentsList') {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      if (container.children.length > 1) {
+        btn.parentElement.remove();
+      } else {
+        btn.parentElement.querySelector('input').value = '';
       }
     }
 
@@ -1121,16 +1340,26 @@
       const summonFields = document.getElementById('annSummonFields');
       const doctorField = document.getElementById('annDoctorField');
       const academicFields = document.getElementById('annAcademicFields');
+
+      const yearWrapper = document.getElementById('annYearWrapper');
       const semWrapper = document.getElementById('annSemesterWrapper');
+      const secWrapper = document.getElementById('annSectionWrapper');
+      const examWrapper = document.getElementById('annExamTypeWrapper');
       const subWrapper = document.getElementById('annSubjectWrapper');
+
       const fileLabel = document.getElementById('annFileLabel');
       const fileInput = document.getElementById('annFile');
 
       summonFields.classList.add('hidden');
       doctorField.classList.add('hidden');
       academicFields.classList.add('hidden');
+
+      yearWrapper.classList.remove('hidden');
       semWrapper.classList.remove('hidden');
+      secWrapper.classList.remove('hidden');
+      examWrapper.classList.add('hidden');
       subWrapper.classList.remove('hidden');
+
       fileInput.accept = '.pdf,image/*';
       fileLabel.textContent = 'إرفاق صورة أو ملف PDF (اختياري):';
 
@@ -1142,23 +1371,138 @@
       } else if (type === 'absence') {
         doctorField.classList.remove('hidden');
         academicFields.classList.remove('hidden');
-        semWrapper.classList.add('hidden');
+      } else if (type === 'makeup') {
+        academicFields.classList.remove('hidden');
       } else if (type === 'quiz') {
         academicFields.classList.remove('hidden');
-        semWrapper.classList.add('hidden');
         fileInput.accept = 'image/*';
         fileLabel.textContent = 'رفع صورة إعلان المذاكرة:';
       } else if (type === 'schedule') {
         academicFields.classList.remove('hidden');
+        secWrapper.classList.add('hidden');
         subWrapper.classList.add('hidden');
         fileInput.accept = '.pdf,image/*';
         fileLabel.textContent = 'رفع برنامج الدوام (صورة أو ملف PDF):';
-      } else if (type === 'makeup') {
+      } else if (type === 'exam_schedule') {
         academicFields.classList.remove('hidden');
-        semWrapper.classList.add('hidden');
+        secWrapper.classList.add('hidden');
+        subWrapper.classList.add('hidden');
+        examWrapper.classList.remove('hidden');
+        fileInput.accept = '.pdf,image/*';
+        fileLabel.textContent = 'رفع برنامج الامتحان (صورة أو ملف PDF):';
+      } else if (type === 'new_semester') {
+        academicFields.classList.remove('hidden');
+        secWrapper.classList.add('hidden');
+        subWrapper.classList.add('hidden');
+      } else if (type.startsWith('custom:')) {
+        academicFields.classList.remove('hidden');
       }
     }
 
+    // --- نافذة إضافة وتعديل وحذف الخيارات (الجهات وأنواع الإعلانات) ---
+    function openOptionModal(kind, mode) {
+      if (mode === 'edit') {
+        if (kind === 'announcement_type') {
+          const val = document.getElementById('annType').value;
+          if (!val.startsWith('custom:')) {
+            return alert('الأنواع الأساسية ثابتة لأنها مرتبطة بحقول ذكية مخصصة. يمكنك تعديل أو حذف الأنواع المضافة عبر زر (+) فقط.');
+          }
+          const optId = val.replace('custom:', '');
+          const opt = customOptions.find(o => o.id === optId);
+          if (!opt) return;
+          optionModalState = { kind, mode: 'edit', editId: opt.id };
+          document.getElementById('optionModalTitle').textContent = 'تعديل نوع الإعلان';
+          document.getElementById('optionInputLabel').value = opt.label;
+        } else {
+          const deptSelect = document.getElementById('annDepartment');
+          const selectedOpt = deptSelect.options[deptSelect.selectedIndex];
+          const optId = selectedOpt ? selectedOpt.getAttribute('data-id') : null;
+          if (!optId) return alert('اختر جهة صالحة للتعديل.');
+          optionModalState = { kind, mode: 'edit', editId: optId };
+          document.getElementById('optionModalTitle').textContent = 'تعديل اسم الجهة / الموظف';
+          document.getElementById('optionInputLabel').value = selectedOpt.value;
+        }
+      } else {
+        optionModalState = { kind, mode: 'add', editId: null };
+        document.getElementById('optionModalTitle').textContent = kind === 'department' ? 'إضافة جهة / موظف جديد' : 'إضافة نوع إعلان جديد';
+        document.getElementById('optionInputLabel').value = '';
+      }
+
+      document.getElementById('optionModal').classList.remove('hidden');
+      document.getElementById('optionModal').classList.add('flex');
+      document.getElementById('optionInputLabel').focus();
+    }
+
+    function closeOptionModal() {
+      document.getElementById('optionModal').classList.add('hidden');
+      document.getElementById('optionModal').classList.remove('flex');
+    }
+
+    async function saveOptionModal() {
+      const label = document.getElementById('optionInputLabel').value.trim();
+      if (!label) return alert('يرجى كتابة الاسم أولاً.');
+
+      const btn = document.getElementById('optionSaveBtn');
+      btn.disabled = true;
+      btn.textContent = 'جاري الحفظ...';
+
+      try {
+        if (optionModalState.mode === 'add') {
+          const exists = customOptions.some(o => o.kind === optionModalState.kind && normalizeText(o.label) === normalizeText(label));
+          if (exists) throw new Error('هذا العنصر موجود مسبقاً!');
+          const { data, error } = await sb.from('custom_options').insert([{ kind: optionModalState.kind, label }]).select();
+          if (error) throw error;
+          await fetchData();
+          if (data && data[0]) {
+            if (optionModalState.kind === 'announcement_type') {
+              document.getElementById('annType').value = 'custom:' + data[0].id;
+              updateAnnouncementFormFields();
+            } else {
+              document.getElementById('annDepartment').value = data[0].label;
+            }
+          }
+        } else {
+          const { error } = await sb.from('custom_options').update({ label }).eq('id', optionModalState.editId);
+          if (error) throw error;
+          await fetchData();
+        }
+        closeOptionModal();
+      } catch (err) {
+        alert('خطأ: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'حفظ';
+      }
+    }
+
+    async function deleteSelectedOption(kind) {
+      let optId = null;
+      let label = '';
+      if (kind === 'announcement_type') {
+        const val = document.getElementById('annType').value;
+        if (!val.startsWith('custom:')) {
+          return alert('لا يمكن حذف الأنواع الأساسية الثابتة. يمكنك حذف الأنواع التي أضفتها عبر زر (+) فقط.');
+        }
+        optId = val.replace('custom:', '');
+        const found = customOptions.find(o => o.id === optId);
+        label = found ? found.label : '';
+      } else {
+        const deptSelect = document.getElementById('annDepartment');
+        const selectedOpt = deptSelect.options[deptSelect.selectedIndex];
+        optId = selectedOpt ? selectedOpt.getAttribute('data-id') : null;
+        label = selectedOpt ? selectedOpt.value : '';
+      }
+
+      if (!optId) return alert('لا يوجد عنصر محدد للحذف.');
+      if (!confirm(`هل أنت متأكد من حذف "${label}"؟`)) return;
+
+      const { error } = await sb.from('custom_options').delete().eq('id', optId);
+      if (error) return alert('خطأ في الحذف: ' + error.message);
+      await fetchData();
+      updateAnnouncementFormFields();
+    }
+
+    // --- تسجيل الدخول والخروج ---
     async function loginAdmin() {
       const email = document.getElementById('adminEmail').value.trim();
       const password = document.getElementById('adminPass').value;
@@ -1287,7 +1631,7 @@
         if (dbError) throw dbError;
 
         document.getElementById('lecTitle').value = '';
-        fileInput.value = '';
+        clearSelectedFile('lecFile', 'lecFilePreviewBar');
         await fetchData();
         alert('تم رفع ونشر المحاضرة بنجاح!');
       } catch (err) {
@@ -1311,23 +1655,59 @@
       const title = document.getElementById('annTitle').value.trim();
       const details = document.getElementById('annDetails').value.trim();
       const announcement_date = document.getElementById('annDate').value;
-      const student_name = type === 'summon' ? document.getElementById('annStudentName').value.trim() : null;
+
+      const studentNames = [...document.querySelectorAll('.ann-student-input')]
+        .map(el => el.value.trim())
+        .filter(Boolean);
+      const student_name = type === 'summon' ? studentNames.join(' • ') : null;
       const department = type === 'summon' ? document.getElementById('annDepartment').value : null;
       const doctor_name = type === 'absence' ? document.getElementById('annDoctorName').value.trim() : null;
-      const target_year_val = document.getElementById('annTargetYear').value;
-      const target_sem_val = document.getElementById('annTargetSemester').value;
-      const target_year = ['summon', 'absence', 'quiz', 'schedule', 'makeup'].includes(type) && target_year_val ? parseInt(target_year_val) : null;
-      const target_semester = type === 'schedule' && target_sem_val ? parseInt(target_sem_val) : null;
-      const subject_name = ['absence', 'quiz', 'makeup'].includes(type) ? document.getElementById('annSubjectName').value.trim() : null;
+
+      const yearVal = document.getElementById('annTargetYear').value;
+      const semVal = document.getElementById('annTargetSemester').value;
+      const secVal = document.getElementById('annSection').value;
+      const examVal = document.getElementById('annExamType').value;
+      const subVal = document.getElementById('annSubjectName').value.trim();
+
+      const usesAcademic = ['summon', 'absence', 'makeup', 'quiz', 'schedule', 'exam_schedule', 'new_semester'].includes(type) || type.startsWith('custom:');
+      const target_year = usesAcademic && yearVal ? parseInt(yearVal) : null;
+      const target_semester = (['absence', 'makeup', 'quiz', 'schedule', 'exam_schedule', 'new_semester'].includes(type) || type.startsWith('custom:')) && semVal ? parseInt(semVal) : null;
+      const section = (['summon', 'absence', 'makeup', 'quiz'].includes(type) || type.startsWith('custom:')) && secVal ? secVal : null;
+      const exam_type = type === 'exam_schedule' && examVal ? examVal : null;
+      const subject_name = (['absence', 'makeup', 'quiz'].includes(type) || type.startsWith('custom:')) && subVal ? subVal : null;
+
       const fileInput = document.getElementById('annFile');
       const file = fileInput.files[0];
       const btn = document.getElementById('addAnnBtn');
 
       if (!title) return alert('يرجى كتابة عنوان الإعلان.');
-      if (type === 'summon' && !student_name) return alert('يرجى كتابة اسم الطالب / الطالبة.');
-      if (type === 'absence' && !doctor_name) return alert('يرجى كتابة اسم الدكتور / الأستاذ.');
-      if ((type === 'quiz' || type === 'schedule') && !file && !details) {
-        return alert('يرجى إرفاق ملف/صورة الإعلان أو كتابة التفاصيل.');
+
+      if (type === 'summon') {
+        if (!student_name) return alert('يرجى كتابة اسم الطالب / الطالبة.');
+        if (!department) return alert('يرجى اختيار الجهة المطلوب مراجعتها.');
+        if (!target_year) return alert('يرجى تحديد السنة الدراسية.');
+      }
+      if (type === 'absence') {
+        if (!doctor_name) return alert('يرجى كتابة اسم الدكتور / المدرس.');
+        if (!subject_name) return alert('يرجى كتابة اسم المادة.');
+        if (!target_year || !target_semester || !section) return alert('يرجى تحديد السنة الدراسية والفصل والقسم (نظري/عملي).');
+      }
+      if (type === 'makeup') {
+        if (!subject_name) return alert('يرجى كتابة اسم المادة.');
+        if (!target_year || !target_semester || !section) return alert('يرجى تحديد السنة الدراسية والفصل والقسم (نظري/عملي).');
+      }
+      if (type === 'quiz') {
+        if (!subject_name) return alert('يرجى كتابة اسم المادة.');
+        if (!target_year || !target_semester || !section) return alert('يرجى تحديد السنة الدراسية والفصل والقسم (نظري/عملي).');
+      }
+      if (type === 'schedule') {
+        if (!target_year || !target_semester) return alert('يرجى تحديد السنة الدراسية والفصل الدراسي لبرنامج الدوام.');
+      }
+      if (type === 'exam_schedule') {
+        if (!exam_type || !target_year || !target_semester) return alert('يرجى تحديد نوع الامتحان (عملي/نظري) والسنة والفصل.');
+      }
+      if (type === 'new_semester' && !target_semester) {
+        return alert('يرجى تحديد الفصل الدراسي (الأول أم الثاني).');
       }
 
       btn.disabled = true;
@@ -1350,19 +1730,24 @@
 
         const { error: dbError } = await sb.from('announcements').insert([{
           type, title, details, student_name, department, doctor_name,
-          target_year, target_semester, subject_name, file_url, file_type, announcement_date
+          target_year, target_semester, section, exam_type, subject_name,
+          file_url, file_type, announcement_date
         }]);
         if (dbError) throw dbError;
 
         document.getElementById('annTitle').value = '';
         document.getElementById('annDetails').value = '';
-        document.getElementById('annStudentName').value = '';
         document.getElementById('annDoctorName').value = '';
         document.getElementById('annSubjectName').value = '';
-        fileInput.value = '';
+        document.getElementById('annTargetYear').value = '';
+        document.getElementById('annTargetSemester').value = '';
+        document.getElementById('annSection').value = '';
+        document.getElementById('annExamType').value = '';
+        resetStudentInputRows();
+        clearSelectedFile('annFile', 'annFilePreviewBar');
 
         await fetchData();
-        alert('تم نشر الإعلان بنجاح!');
+        alert('تم نشر الإعلان بنجاح! يمكنك تعديله أو حذفه في أي وقت من لوحة الإعلانات أو من تبويب إدارة الكل.');
       } catch (err) {
         alert('حدث خطأ أثناء نشر الإعلان: ' + err.message);
       } finally {
@@ -1378,7 +1763,88 @@
       await fetchData();
     }
 
-    // --- دوال التعديل للمدير ---
+    // --- تبويب إدارة وتعديل وحذف الكل داخل لوحة التحكم ---
+    function renderAdminManageTab() {
+      const container = document.getElementById('adminManageContainer');
+      if (!container) return;
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <!-- إدارة الإعلانات المنشورة -->
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <h4 class="font-bold text-hamaBrown mb-3 flex items-center justify-between">
+              <span><i class="fa-solid fa-bullhorn ml-1"></i> الإعلانات المنشورة (${announcements.length})</span>
+            </h4>
+            ${announcements.length === 0 ? `<p class="text-xs text-slate-500">لا توجد إعلانات منشورة بعد.</p>` : `
+              <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
+                ${announcements.map(ann => {
+                  const meta = getAnnouncementMeta(ann.type);
+                  return `
+                    <div class="bg-white border rounded-lg p-2.5 flex items-center justify-between gap-2 text-xs">
+                      <div class="truncate">
+                        <span class="font-bold text-slate-800">${ann.title}</span>
+                        <span class="text-slate-400 mr-2">(${meta.label} - ${ann.announcement_date || ''})</span>
+                      </div>
+                      <div class="flex items-center gap-1 shrink-0">
+                        <button onclick="openEditAnnouncementModal('${ann.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+                        <button onclick="deleteAnnouncement('${ann.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1 rounded font-bold"><i class="fa-solid fa-trash"></i> حذف</button>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `}
+          </div>
+
+          <!-- إدارة المواد الدراسية -->
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <h4 class="font-bold text-hamaGreen mb-3"><i class="fa-solid fa-book ml-1"></i> المواد الدراسية (${subjects.length})</h4>
+            ${subjects.length === 0 ? `<p class="text-xs text-slate-500">لا توجد مواد مسجلة.</p>` : `
+              <div class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                ${subjects.map(sub => `
+                  <div class="bg-white border rounded-lg p-2.5 flex items-center justify-between gap-2 text-xs">
+                    <div class="truncate">
+                      <span class="font-bold text-slate-800">${sub.name}</span>
+                      <span class="text-slate-400 mr-2">(${yearNames[sub.year]} - ${sub.semester === 1 ? 'فصل 1' : 'فصل 2'})</span>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                      <button onclick="openEditSubjectModal('${sub.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+                      <button onclick="deleteSubject('${sub.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1 rounded font-bold"><i class="fa-solid fa-trash"></i> حذف</button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+
+          <!-- إدارة المحاضرات المرفوعة -->
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <h4 class="font-bold text-slate-700 mb-3"><i class="fa-solid fa-file-pdf ml-1"></i> المحاضرات المرفوعة (${lectures.length})</h4>
+            ${lectures.length === 0 ? `<p class="text-xs text-slate-500">لا توجد محاضرات مرفوعة.</p>` : `
+              <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
+                ${lectures.map(lec => {
+                  const sub = subjects.find(s => s.id === lec.subject_id);
+                  return `
+                    <div class="bg-white border rounded-lg p-2.5 flex items-center justify-between gap-2 text-xs">
+                      <div class="truncate">
+                        <span class="font-bold text-slate-800">${lec.title} (محاضرة ${lec.lecture_number})</span>
+                        <span class="text-slate-400 mr-2">${sub ? sub.name : ''} - ${lec.category === 'theoretical' ? 'نظري' : 'عملي'}</span>
+                      </div>
+                      <div class="flex items-center gap-1 shrink-0">
+                        <button onclick="openEditLectureModal('${lec.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+                        <button onclick="deleteLecture('${lec.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1 rounded font-bold"><i class="fa-solid fa-trash"></i> حذف</button>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `}
+          </div>
+        </div>
+      `;
+    }
+
+    // --- نوافذ التعديل للمواد والمحاضرات والإعلانات ---
     function closeEditModal() {
       document.getElementById('editModal').classList.add('hidden');
       document.getElementById('editModal').classList.remove('flex');
@@ -1473,7 +1939,17 @@
         </div>
         <div>
           <label class="block text-xs font-bold text-slate-600 mb-1">استبدال الملف بملف جديد (اختياري):</label>
-          <input type="file" id="editLecFile" accept=".pdf,image/*" class="w-full text-xs border rounded-lg p-1.5 bg-slate-50">
+          <input type="file" id="editLecFile" accept=".pdf,image/*" onchange="handleFileSelect('editLecFile', 'editLecFileBar', 'editLecFileName')" class="w-full text-xs border rounded-lg p-1.5 bg-slate-50">
+          <div id="editLecFileBar" class="hidden mt-2 items-center justify-between gap-2 bg-slate-50 border border-emerald-200 rounded-lg px-3 py-1.5 text-xs">
+            <span class="font-bold text-slate-700 truncate flex items-center gap-1.5">
+              <i class="fa-solid fa-file-circle-check text-hamaGreen"></i>
+              <span id="editLecFileName"></span>
+            </span>
+            <div class="flex items-center gap-1 shrink-0">
+              <button type="button" onclick="triggerFileReplace('editLecFile')" class="text-blue-600 hover:bg-blue-50 px-2 py-1 rounded font-bold"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+              <button type="button" onclick="clearSelectedFile('editLecFile', 'editLecFileBar')" class="text-red-600 hover:bg-red-50 px-2 py-1 rounded font-bold"><i class="fa-solid fa-trash"></i> حذف</button>
+            </div>
+          </div>
         </div>
         <div class="flex gap-2 pt-2">
           <button id="saveLecEditBtn" onclick="saveEditLecture('${lec.id}')" class="flex-1 bg-hamaGreen hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-sm">حفظ التعديلات</button>
@@ -1544,22 +2020,22 @@
     function openEditAnnouncementModal(id) {
       const ann = announcements.find(a => a.id === id);
       if (!ann) return;
+      removeExistingAnnFile = false;
+
+      const customTypes = customOptions.filter(o => o.kind === 'announcement_type');
+      const depts = customOptions.filter(o => o.kind === 'department');
+      const typeOptionsHtml = Object.entries(builtInAnnouncementMeta)
+        .map(([k, m]) => `<option value="${k}">${m.label}</option>`).join('') +
+        customTypes.map(ct => `<option value="custom:${ct.id}">${ct.label}</option>`).join('');
+      const deptOptionsHtml = `<option value="">غير محدد</option>` +
+        depts.map(d => `<option value="${d.label}">${d.label}</option>`).join('');
 
       document.getElementById('editModalTitle').innerHTML = '<i class="fa-solid fa-pen-to-square"></i> تعديل الإعلان';
       document.getElementById('editModalBody').innerHTML = `
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">نوع الإعلان:</label>
-            <select id="editAnnType" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-              <option value="meeting">إعلان عن اجتماع</option>
-              <option value="holiday">إعلان عن عطلة رسمية</option>
-              <option value="makeup">إعلان عن محاضرة تعويضية</option>
-              <option value="new_year">بدء عام دراسي جديد</option>
-              <option value="summon">استدعاء طالب / طالبة</option>
-              <option value="absence">غياب دكتور / أستاذ</option>
-              <option value="quiz">إعلان عن مذاكرة</option>
-              <option value="schedule">برنامج الدوام الدراسي</option>
-            </select>
+            <select id="editAnnType" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">${typeOptionsHtml}</select>
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">التاريخ:</label>
@@ -1570,31 +2046,24 @@
           <label class="block text-xs font-bold text-slate-600 mb-1">عنوان الإعلان:</label>
           <input type="text" id="editAnnTitle" class="w-full border rounded-lg px-3 py-2 text-sm">
         </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">اسم الطالب (للاستدعاء):</label>
-            <input type="text" id="editAnnStudent" class="w-full border rounded-lg px-3 py-2 text-sm">
+        <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-bold text-slate-700">أسماء الطلاب (للاستدعاء):</label>
+            <button type="button" onclick="addStudentInputRow('', 'editAnnStudentsList')" class="text-xs bg-hamaGreen text-white px-2 py-1 rounded font-bold"><i class="fa-solid fa-plus"></i> طالب آخر</button>
           </div>
+          <div id="editAnnStudentsList" class="space-y-1.5"></div>
           <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">الجهة (للاستدعاء):</label>
-            <select id="editAnnDept" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-              <option value="">غير محدد</option>
-              <option value="شؤون الطلاب">شؤون الطلاب</option>
-              <option value="قسم الامتحانات">قسم الامتحانات</option>
-              <option value="العميد">العميد</option>
-              <option value="نائب العميد">نائب العميد</option>
-              <option value="سكرتاريا العميد">سكرتاريا العميد</option>
-              <option value="رئاسة القسم">رئاسة القسم</option>
-            </select>
+            <label class="block text-xs font-bold text-slate-700 mb-1">الجهة المطلوب مراجعتها:</label>
+            <select id="editAnnDept" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">${deptOptionsHtml}</select>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">اسم الدكتور (للغياب):</label>
+            <label class="block text-xs font-bold text-slate-600 mb-1">اسم الدكتور / المدرس:</label>
             <input type="text" id="editAnnDoctor" class="w-full border rounded-lg px-3 py-2 text-sm">
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">اسم المادة (إن وجد):</label>
+            <label class="block text-xs font-bold text-slate-600 mb-1">اسم المادة:</label>
             <input type="text" id="editAnnSubject" class="w-full border rounded-lg px-3 py-2 text-sm">
           </div>
         </div>
@@ -1602,7 +2071,7 @@
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">السنة الدراسية:</label>
             <select id="editAnnYear" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-              <option value="">الكل / غير محدد</option>
+              <option value="">غير محدد</option>
               <option value="1">السنة الأولى</option>
               <option value="2">السنة الثانية</option>
               <option value="3">السنة الثالثة</option>
@@ -1619,13 +2088,48 @@
             </select>
           </div>
         </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">القسم (نظري / عملي):</label>
+            <select id="editAnnSection" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+              <option value="">غير محدد</option>
+              <option value="theoretical">القسم النظري</option>
+              <option value="practical">القسم العملي</option>
+              <option value="both">نظري وعملي</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">نوع الامتحان (للبرامج):</label>
+            <select id="editAnnExamType" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+              <option value="">غير محدد</option>
+              <option value="theoretical">امتحان نظري</option>
+              <option value="practical">امتحان عملي</option>
+            </select>
+          </div>
+        </div>
         <div>
           <label class="block text-xs font-bold text-slate-600 mb-1">التفاصيل:</label>
           <textarea id="editAnnDetails" rows="3" class="w-full border rounded-lg px-3 py-2 text-sm"></textarea>
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">استبدال الصورة / ملف PDF (اختياري):</label>
-          <input type="file" id="editAnnFile" accept=".pdf,image/*" class="w-full text-xs border rounded-lg p-1.5 bg-slate-50">
+          <label class="block text-xs font-bold text-slate-600 mb-1">المرفق (صورة أو ملف PDF):</label>
+          ${ann.file_url ? `
+            <div id="existingAnnFileBar" class="mb-2 flex items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1.5 text-xs">
+              <span class="font-bold text-hamaGreen truncate"><i class="fa-solid fa-paperclip ml-1"></i> يوجد ملف مرفق حالياً</span>
+              <div class="flex items-center gap-1">
+                <button type="button" onclick="triggerFileReplace('editAnnFile')" class="text-blue-600 hover:bg-blue-100 px-2 py-1 rounded font-bold"><i class="fa-solid fa-pen-to-square"></i> تغيير</button>
+                <button type="button" onclick="removeExistingAnnFile=true; document.getElementById('existingAnnFileBar').classList.add('hidden');" class="text-red-600 hover:bg-red-100 px-2 py-1 rounded font-bold"><i class="fa-solid fa-trash"></i> حذف المرفق</button>
+              </div>
+            </div>
+          ` : ''}
+          <input type="file" id="editAnnFile" accept=".pdf,image/*" onchange="handleFileSelect('editAnnFile', 'editAnnFileBar', 'editAnnFileName')" class="w-full text-xs border rounded-lg p-1.5 bg-slate-50">
+          <div id="editAnnFileBar" class="hidden mt-2 items-center justify-between gap-2 bg-slate-50 border border-emerald-200 rounded-lg px-3 py-1.5 text-xs">
+            <span class="font-bold text-slate-700 truncate"><i class="fa-solid fa-file-circle-check text-hamaGreen ml-1"></i><span id="editAnnFileName"></span></span>
+            <div class="flex items-center gap-1 shrink-0">
+              <button type="button" onclick="triggerFileReplace('editAnnFile')" class="text-blue-600 hover:bg-blue-50 px-2 py-1 rounded font-bold"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+              <button type="button" onclick="clearSelectedFile('editAnnFile', 'editAnnFileBar')" class="text-red-600 hover:bg-red-50 px-2 py-1 rounded font-bold"><i class="fa-solid fa-trash"></i> حذف</button>
+            </div>
+          </div>
         </div>
         <div class="flex gap-2 pt-2">
           <button id="saveAnnEditBtn" onclick="saveEditAnnouncement('${ann.id}')" class="flex-1 bg-hamaGreen hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-sm">حفظ التعديلات</button>
@@ -1636,13 +2140,17 @@
       document.getElementById('editAnnType').value = ann.type || 'meeting';
       document.getElementById('editAnnDate').value = ann.announcement_date || '';
       document.getElementById('editAnnTitle').value = ann.title || '';
-      document.getElementById('editAnnStudent').value = ann.student_name || '';
       document.getElementById('editAnnDept').value = ann.department || '';
       document.getElementById('editAnnDoctor').value = ann.doctor_name || '';
       document.getElementById('editAnnSubject').value = ann.subject_name || '';
       document.getElementById('editAnnYear').value = ann.target_year || '';
       document.getElementById('editAnnSem').value = ann.target_semester || '';
+      document.getElementById('editAnnSection').value = ann.section || '';
+      document.getElementById('editAnnExamType').value = ann.exam_type || '';
       document.getElementById('editAnnDetails').value = ann.details || '';
+
+      const studentsArr = ann.student_name ? ann.student_name.split(' • ').map(s => s.trim()).filter(Boolean) : [''];
+      resetStudentInputRows('editAnnStudentsList', studentsArr);
 
       document.getElementById('editModal').classList.remove('hidden');
       document.getElementById('editModal').classList.add('flex');
@@ -1652,7 +2160,12 @@
       const type = document.getElementById('editAnnType').value;
       const announcement_date = document.getElementById('editAnnDate').value;
       const title = document.getElementById('editAnnTitle').value.trim();
-      const student_name = document.getElementById('editAnnStudent').value.trim() || null;
+
+      const studentNames = [...document.querySelectorAll('.edit-ann-student-input')]
+        .map(el => el.value.trim())
+        .filter(Boolean);
+      const student_name = studentNames.length > 0 ? studentNames.join(' • ') : null;
+
       const department = document.getElementById('editAnnDept').value || null;
       const doctor_name = document.getElementById('editAnnDoctor').value.trim() || null;
       const subject_name = document.getElementById('editAnnSubject').value.trim() || null;
@@ -1660,6 +2173,8 @@
       const semVal = document.getElementById('editAnnSem').value;
       const target_year = yearVal ? parseInt(yearVal) : null;
       const target_semester = semVal ? parseInt(semVal) : null;
+      const section = document.getElementById('editAnnSection').value || null;
+      const exam_type = document.getElementById('editAnnExamType').value || null;
       const details = document.getElementById('editAnnDetails').value.trim();
       const file = document.getElementById('editAnnFile').files[0];
       const btn = document.getElementById('saveAnnEditBtn');
@@ -1672,8 +2187,14 @@
       try {
         const updatePayload = {
           type, announcement_date, title, student_name, department,
-          doctor_name, subject_name, target_year, target_semester, details
+          doctor_name, subject_name, target_year, target_semester,
+          section, exam_type, details
         };
+
+        if (removeExistingAnnFile && !file) {
+          updatePayload.file_url = null;
+          updatePayload.file_type = null;
+        }
 
         if (file) {
           btn.textContent = 'جاري رفع الملف الجديد...';
