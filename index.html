@@ -244,7 +244,7 @@
           <button onclick="logoutAdmin()" class="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1.5 rounded-lg font-bold">تسجيل خروج</button>
         </div>
 
-        <!-- أزرار التبويبات بتصميم متناسق (3 أزرار في الصف العلوي + زر الحسابات أسفلها بعرض كامل) -->
+        <!-- أزرار التبويبات بتصميم متناسق ومتوازن لكل دور -->
         <div id="adminTabsWrapper" class="space-y-2 border-b pb-3">
           <div id="adminTabsTopRow" class="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <button id="adminTabBtnLectures" onclick="switchAdminTab('lectures')" class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-hamaGreen text-white transition flex items-center justify-center gap-1.5">
@@ -257,12 +257,17 @@
               <i class="fa-solid fa-sliders"></i> <span id="adminTabManageLabel">إدارة وتعديل وحذف</span>
             </button>
           </div>
-          <button id="adminTabBtnUsers" onclick="switchAdminTab('users')" class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center justify-center gap-1.5">
-            <i class="fa-solid fa-users-gear"></i> <span id="adminTabUsersLabel">إدارة الحسابات</span>
-          </button>
+          <div id="adminTabsBottomRow" class="grid grid-cols-1 gap-2">
+            <button id="adminTabBtnUsers" onclick="switchAdminTab('users')" class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-users-gear"></i> <span id="adminTabUsersLabel">إدارة الحسابات</span>
+            </button>
+            <button id="adminTabBtnProfile" onclick="switchAdminTab('profile')" class="hidden w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-id-card"></i> <span>حساب المدير العام (تحديث وتسليم المنصة)</span>
+            </button>
+          </div>
         </div>
 
-        <!-- تبويب 1: إضافة مادة (للموظف فقط) / رفع محاضرة (للمدرس فقط) بعرض كامل بدون فراغ جانبي -->
+        <!-- تبويب 1: إضافة مادة (للموظف فقط) / رفع محاضرة (للمدرس فقط) -->
         <div id="adminTabLectures" class="space-y-5">
           <!-- بطاقة إضافة مادة (تظهر للموظف المسؤول فقط) -->
           <div id="adminAddSubjectCard" class="w-full border rounded-xl p-5 bg-slate-50 space-y-3">
@@ -342,7 +347,7 @@
             <button id="addLecBtn" onclick="addLecture()" class="w-full bg-hamaBrown hover:bg-amber-950 text-white text-sm font-bold py-2.5 rounded-lg">رفع ونشر المحاضرة</button>
           </div>
         </div>
-        <!-- نهاية القسم 1 -->
+        <!-- نهاية الجزء الأول -->
         <!-- تبويب 2: إضافة إعلان (للموظف المسؤول فقط) -->
         <div id="adminTabAnnouncements" class="hidden border rounded-xl p-5 bg-slate-50 space-y-4">
           <h4 class="font-bold text-hamaBrown border-b pb-2"><i class="fa-solid fa-bullhorn ml-1"></i> نشر إعلان أو تبليغ رسمي</h4>
@@ -482,7 +487,7 @@
           </button>
         </div>
 
-        <!-- تبويب 3: إدارة وتعديل وحذف (المواد والإعلانات للموظف / المحاضرات المسندة للمدرس) -->
+        <!-- تبويب 3: إدارة وتعديل وحذف -->
         <div id="adminTabManage" class="hidden space-y-5">
           <div id="adminManageContainer"></div>
         </div>
@@ -537,6 +542,40 @@
             <div id="usersListContainer" class="space-y-2.5 max-h-72 overflow-y-auto"></div>
           </div>
         </div>
+
+        <!-- تبويب 5: حساب المدير العام (تحديث وتسليم المنصة) -->
+        <div id="adminTabProfile" class="hidden border rounded-xl p-5 bg-slate-50 space-y-4">
+          <h4 class="font-bold text-hamaBrown border-b pb-2">
+            <i class="fa-solid fa-id-card ml-1"></i> بيانات حساب المدير العام وتسليم المنصة
+          </h4>
+          <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl p-3 text-xs font-semibold leading-relaxed">
+            <i class="fa-solid fa-shield-halved ml-1"></i>
+            عند تعديل اسم المدير العام أو بريده الإلكتروني أو كلمة المرور (أو عند تسليم المنصة لعميد أو مسؤول جديد)، تبقى جميع حسابات الموظفين والمدرسين والمواد والمحاضرات والإعلانات مرتبطة بالنظام بشكل طبيعي دون أي تأثر.
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">الاسم الكامل للمدير العام:</label>
+              <input type="text" id="superAdminName" placeholder="الاسم الكامل" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">البريد الإلكتروني للحساب:</label>
+              <input type="email" id="superAdminEmail" dir="ltr" placeholder="admin@gmail.com" class="w-full border rounded-lg px-3 py-2 text-sm bg-white text-left">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">كلمة مرور جديدة (اتركها فارغة للإبقاء على كلمة المرور الحالية):</label>
+            <div class="relative">
+              <input type="password" id="superAdminPass" placeholder="6 أحرف فأكثر عند التغيير" class="w-full border rounded-lg pr-3 pl-10 py-2 text-sm bg-white">
+              <button type="button" onclick="togglePasswordVisibility('superAdminPass', this)" title="إظهار كلمة المرور"
+                      class="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-hamaGreen px-1">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button id="saveSuperAdminBtn" onclick="saveSuperAdminProfile()" class="w-full bg-hamaGreen hover:bg-emerald-700 text-white text-sm font-bold py-2.5 rounded-lg transition">
+            حفظ وتحديث بيانات المدير العام
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -577,7 +616,7 @@
       </div>
     </div>
   </div>
-  <!-- نهاية القسم 2 -->
+  <!-- نهاية الجزء الثاني -->
   <script>
     const SUPABASE_URL = 'https://zesmqhhqhbinhhmmtgkk.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inplc21xaGhxaGJpbmhobW10Z2trIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NzY4MzEsImV4cCI6MjExMDM1MjgzMX0.PokJmQ1aWoZSGoq5C5oEyaYsyB_MLH2nY-nxv8lUwUE';
@@ -629,9 +668,9 @@
       exam_schedule: { label: 'إعلان برنامج الامتحان',      icon: 'fa-file-signature', badge: 'bg-rose-100 text-rose-800 border-rose-200' }
     };
 
-    function isSuperAdmin() { return currentProfile && currentProfile.role === 'super_admin'; }
-    function isStaff() { return currentProfile && currentProfile.role === 'staff'; }
-    function isTeacher() { return currentProfile && currentProfile.role === 'teacher'; }
+    function isSuperAdmin() { return currentProfile && currentProfile.is_active !== false && currentProfile.role === 'super_admin'; }
+    function isStaff() { return currentProfile && currentProfile.is_active !== false && currentProfile.role === 'staff'; }
+    function isTeacher() { return currentProfile && currentProfile.is_active !== false && currentProfile.role === 'teacher'; }
 
     function canManageSubjectsAndAnnouncements() { return isStaff(); }
     function canManageUsers() { return isSuperAdmin() || isStaff(); }
@@ -712,7 +751,21 @@
         return;
       }
       const { data, error } = await sb.from('app_users').select('*').eq('id', currentUser.id).single();
-      currentProfile = (!error && data) ? data : null;
+      if (!error && data) {
+        if (data.is_active === false) {
+          await sb.auth.signOut();
+          currentUser = null;
+          currentProfile = null;
+          lastAuthUserId = null;
+          managedUsers = [];
+          allTeacherAssignments = [];
+          alert('تم إيقاف حسابك مؤقتاً من قبل إدارة الكلية.');
+          return;
+        }
+        currentProfile = data;
+      } else {
+        currentProfile = null;
+      }
       await loadRoleData();
     }
 
@@ -1557,7 +1610,7 @@
 
     function switchAdminTab(tab) {
       if (isSuperAdmin()) {
-        tab = 'users';
+        if (!['users', 'profile'].includes(tab)) tab = 'users';
       } else if (isStaff()) {
         if (!['lectures', 'announcements', 'manage', 'users'].includes(tab)) tab = 'announcements';
       } else if (isTeacher()) {
@@ -1568,21 +1621,25 @@
       const annTab = document.getElementById('adminTabAnnouncements');
       const mngTab = document.getElementById('adminTabManage');
       const usrTab = document.getElementById('adminTabUsers');
+      const profTab = document.getElementById('adminTabProfile');
 
       const lecBtn = document.getElementById('adminTabBtnLectures');
       const annBtn = document.getElementById('adminTabBtnAnnouncements');
       const mngBtn = document.getElementById('adminTabBtnManage');
       const usrBtn = document.getElementById('adminTabBtnUsers');
+      const profBtn = document.getElementById('adminTabBtnProfile');
 
       lecTab.classList.add('hidden');
       annTab.classList.add('hidden');
       mngTab.classList.add('hidden');
       usrTab.classList.add('hidden');
+      profTab.classList.add('hidden');
 
       setAdminTabBtnStyle(lecBtn, false, '');
       setAdminTabBtnStyle(annBtn, false, '');
       setAdminTabBtnStyle(mngBtn, false, '');
       setAdminTabBtnStyle(usrBtn, false, '');
+      setAdminTabBtnStyle(profBtn, false, '');
 
       if (tab === 'lectures') {
         lecTab.classList.remove('hidden');
@@ -1603,6 +1660,14 @@
         setAdminTabBtnStyle(usrBtn, true, 'bg-indigo-700 text-white');
         setupUsersTabUI();
         renderUsersList();
+      } else if (tab === 'profile') {
+        profTab.classList.remove('hidden');
+        setAdminTabBtnStyle(profBtn, true, 'bg-hamaBrown text-white');
+        if (currentProfile) {
+          document.getElementById('superAdminName').value = currentProfile.full_name || '';
+          document.getElementById('superAdminEmail').value = currentProfile.email || '';
+          document.getElementById('superAdminPass').value = '';
+        }
       }
     }
 
@@ -1631,28 +1696,39 @@
       const teacherBanner = document.getElementById('teacherAssignedBanner');
 
       const topRow = document.getElementById('adminTabsTopRow');
+      const bottomRow = document.getElementById('adminTabsBottomRow');
       const tabLecturesBtn = document.getElementById('adminTabBtnLectures');
       const tabAnnouncementsBtn = document.getElementById('adminTabBtnAnnouncements');
       const tabManageBtn = document.getElementById('adminTabBtnManage');
       const tabUsersBtn = document.getElementById('adminTabBtnUsers');
+      const tabProfileBtn = document.getElementById('adminTabBtnProfile');
 
       let defaultTab = 'lectures';
 
       if (isSuperAdmin()) {
         topRow.classList.add('hidden');
+        bottomRow.classList.remove('hidden');
+        bottomRow.className = 'grid grid-cols-1 sm:grid-cols-2 gap-2';
+
         tabLecturesBtn.classList.add('hidden');
         tabAnnouncementsBtn.classList.add('hidden');
         tabManageBtn.classList.add('hidden');
         tabUsersBtn.classList.remove('hidden');
+        tabProfileBtn.classList.remove('hidden');
+
         document.getElementById('adminTabUsersLabel').textContent = 'إدارة حسابات الموظفين المسؤولين';
-        defaultTab = 'users';
+        defaultTab = activeTab || 'users';
       } else if (isStaff()) {
         topRow.classList.remove('hidden');
         topRow.className = 'grid grid-cols-1 sm:grid-cols-3 gap-2';
+        bottomRow.classList.remove('hidden');
+        bottomRow.className = 'grid grid-cols-1 gap-2';
+
         tabLecturesBtn.classList.remove('hidden');
         tabAnnouncementsBtn.classList.remove('hidden');
         tabManageBtn.classList.remove('hidden');
         tabUsersBtn.classList.remove('hidden');
+        tabProfileBtn.classList.add('hidden');
 
         document.getElementById('adminTabLecturesLabel').textContent = 'إضافة مادة دراسية';
         document.getElementById('adminTabManageLabel').textContent = 'إدارة المواد والإعلانات';
@@ -1664,10 +1740,13 @@
       } else if (isTeacher()) {
         topRow.classList.remove('hidden');
         topRow.className = 'grid grid-cols-1 sm:grid-cols-2 gap-2';
+        bottomRow.classList.add('hidden');
+
         tabLecturesBtn.classList.remove('hidden');
         tabAnnouncementsBtn.classList.add('hidden');
         tabManageBtn.classList.remove('hidden');
         tabUsersBtn.classList.add('hidden');
+        tabProfileBtn.classList.add('hidden');
 
         document.getElementById('adminTabLecturesLabel').textContent = 'إدارة المحاضرات والملفات';
         document.getElementById('adminTabManageLabel').textContent = 'محاضراتي (تعديل وحذف)';
@@ -1705,9 +1784,9 @@
       resetStudentInputRows();
       switchAdminTab(activeTab || defaultTab);
     }
-    // --- نهاية القسم 3 ---
-    // --- دوال إسناد المقررات المتعددة للمدرس ---
-    function buildSubjectOptionsHtml(selectedSubId = '') {
+    // --- نهاية الجزء الثالث ---
+       // --- دوال إسناد المقررات المتعددة للمدرس ---
+       function buildSubjectOptionsHtml(selectedSubId = '') {
       if (subjects.length === 0) {
         return `<option value="">لا توجد مواد مضافة بعد...</option>`;
       }
@@ -1792,7 +1871,7 @@
       return result;
     }
 
-    // --- إدارة الحسابات ---
+    // --- إدارة الحسابات ودورة حياتها (إنشاء، تعديل، تعطيل/تفعيل، حذف) ---
     function setupUsersTabUI() {
       const title = document.getElementById('createUserFormTitle');
       const assignBox = document.getElementById('newUserTeacherAssignmentsBox');
@@ -1886,19 +1965,24 @@
       }
 
       container.innerHTML = list.map(u => {
+        const isActive = u.is_active !== false;
         const teacherAssigns = u.role === 'teacher'
           ? allTeacherAssignments.filter(a => a.teacher_id === u.id)
           : [];
         const badgeColor = u.role === 'staff'
           ? 'bg-blue-100 text-blue-800 border-blue-200'
           : 'bg-amber-100 text-amber-900 border-amber-200';
+        const statusBadge = isActive
+          ? `<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold">🟢 نشط</span>`
+          : `<span class="px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-300 font-bold">🔴 معطّل</span>`;
 
         return `
-          <div class="bg-white border rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div class="border rounded-xl p-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs ${isActive ? 'bg-white border-slate-200' : 'bg-red-50/40 border-red-200'}">
             <div class="space-y-1.5 flex-1">
               <div class="flex flex-wrap items-center gap-1.5">
                 <span class="font-bold text-sm text-slate-800">${u.full_name}</span>
                 <span class="px-2 py-0.5 rounded-full border font-bold ${badgeColor}">${roleLabels[u.role]}</span>
+                ${statusBadge}
               </div>
               <div class="text-slate-500 font-mono" dir="ltr">${u.email}</div>
 
@@ -1921,17 +2005,95 @@
               ` : ''}
             </div>
 
-            <div class="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
-              <button onclick="openEditUserModal('${u.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-3 py-1.5 rounded-lg font-bold">
+            <div class="flex flex-wrap items-center gap-1.5 shrink-0 self-end md:self-center">
+              ${isActive ? `
+                <button onclick="toggleUserActiveStatus('${u.id}', false)" class="bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 px-2.5 py-1.5 rounded-lg font-bold" title="تعطيل الحساب مؤقتاً">
+                  <i class="fa-solid fa-user-slash"></i> تعطيل الحساب
+                </button>
+              ` : `
+                <button onclick="toggleUserActiveStatus('${u.id}', true)" class="bg-emerald-50 hover:bg-emerald-100 text-hamaGreen border border-emerald-200 px-2.5 py-1.5 rounded-lg font-bold" title="إعادة تفعيل الحساب">
+                  <i class="fa-solid fa-user-check"></i> إعادة تفعيل
+                </button>
+              `}
+              <button onclick="openEditUserModal('${u.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-2.5 py-1.5 rounded-lg font-bold">
                 <i class="fa-solid fa-pen-to-square"></i> تعديل
               </button>
-              <button onclick="deleteUserAccount('${u.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-3 py-1.5 rounded-lg font-bold">
+              <button onclick="deleteUserAccount('${u.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-2.5 py-1.5 rounded-lg font-bold">
                 <i class="fa-solid fa-trash"></i> حذف
               </button>
             </div>
           </div>
         `;
       }).join('');
+    }
+
+    async function toggleUserActiveStatus(userId, makeActive) {
+      const u = managedUsers.find(x => x.id === userId);
+      if (!u) return;
+
+      let msg = '';
+      if (!makeActive) {
+        msg = u.role === 'teacher'
+          ? `هل تريد تعطيل حساب المدرس "${u.full_name}" مؤقتاً؟\nستبقى محاضراته ظاهرة للطلاب، ولن يتمكن من الدخول أو التعديل حتى إعادة تفعيله.`
+          : `هل تريد تعطيل حساب الموظف "${u.full_name}" مؤقتاً؟\nلن يتمكن من الدخول أو إدارة الإعلانات والمدرسين، ولن تتأثر حسابات المدرسين الحالية.`;
+      } else {
+        msg = `هل تريد إعادة تفعيل حساب "${u.full_name}" ليستعيد دخوله وصلاحياته فوراً؟`;
+      }
+
+      if (!confirm(msg)) return;
+
+      try {
+        const { error } = await sb.rpc('admin_toggle_user_status', {
+          p_user_id: userId,
+          p_is_active: makeActive
+        });
+        if (error) throw error;
+
+        await loadRoleData();
+        renderUsersList();
+        alert(makeActive ? 'تم إعادة تفعيل الحساب بنجاح!' : 'تم تعطيل الحساب مؤقتاً بنجاح.');
+      } catch (err) {
+        alert('خطأ في تغيير حالة الحساب: ' + err.message);
+      }
+    }
+
+    async function saveSuperAdminProfile() {
+      if (!isSuperAdmin()) return alert('هذه الصلاحية مخصصة للمدير العام فقط.');
+
+      const full_name = document.getElementById('superAdminName').value.trim();
+      const email = document.getElementById('superAdminEmail').value.trim();
+      const password = document.getElementById('superAdminPass').value;
+      const btn = document.getElementById('saveSuperAdminBtn');
+
+      if (!full_name || !email) return alert('يرجى إدخال الاسم الكامل والبريد الإلكتروني.');
+      if (password && password.length < 6) return alert('كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل.');
+      if (!confirm('هل أنت متأكد من تحديث بيانات حساب المدير العام؟')) return;
+
+      btn.disabled = true;
+      btn.textContent = 'جاري حفظ التحديثات...';
+
+      try {
+        const { error } = await sb.rpc('update_super_admin_profile', {
+          p_full_name: full_name,
+          p_email: email,
+          p_password: password || null
+        });
+        if (error) throw error;
+
+        if (password) {
+          await sb.auth.signInWithPassword({ email: email.toLowerCase(), password });
+        }
+
+        await loadUserProfile();
+        updateStats();
+        updateAdminView(null, null, 'profile');
+        alert('تم تحديث بيانات حساب المدير العام بنجاح مع الحفاظ على ارتباط كافة بيانات المنصة!');
+      } catch (err) {
+        alert('خطأ في تحديث بيانات المدير العام: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'حفظ وتحديث بيانات المدير العام';
+      }
     }
 
     function openEditUserModal(userId) {
@@ -2278,7 +2440,6 @@
       return (str || '').replace(/\s+/g, ' ').trim().toLowerCase();
     }
 
-    // التحقق من رقم المحاضرة (يمنع 0 ويمنع تكرار الرقم، ويسمح بتكرار العنوان مثل "المصفوفات" بأرقام مختلفة)
     function validateLectureInput({ subject_id, category, rawNum, title, excludeId = null }) {
       const lecture_number = Number(rawNum);
       if (!rawNum || !Number.isInteger(lecture_number) || lecture_number <= 0) {
