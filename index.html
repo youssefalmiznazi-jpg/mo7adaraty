@@ -218,7 +218,13 @@
         </div>
         <div>
           <label class="block text-sm font-semibold mb-1">كلمة المرور</label>
-          <input type="password" id="adminPass" placeholder="••••••••" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-hamaGreen/40 outline-none">
+          <div class="relative">
+            <input type="password" id="adminPass" placeholder="••••••••" class="w-full border rounded-lg pr-3 pl-10 py-2 text-sm focus:ring-2 focus:ring-hamaGreen/40 outline-none">
+            <button type="button" onclick="togglePasswordVisibility('adminPass', this)" title="إظهار كلمة المرور"
+                    class="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-hamaGreen px-1">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
         </div>
         <button id="loginBtn" onclick="loginAdmin()" class="w-full bg-hamaGreen hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg transition">
           تسجيل الدخول
@@ -238,32 +244,34 @@
           <button onclick="logoutAdmin()" class="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1.5 rounded-lg font-bold">تسجيل خروج</button>
         </div>
 
-        <!-- أزرار التبويبات -->
-        <div class="flex flex-wrap gap-2 border-b pb-3">
-          <button id="adminTabBtnLectures" onclick="switchAdminTab('lectures')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-hamaGreen text-white transition">
-            <i class="fa-solid fa-book ml-1"></i> <span id="adminTabLecturesLabel">إدارة المحاضرات</span>
-          </button>
-          <button id="adminTabBtnAnnouncements" onclick="switchAdminTab('announcements')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-            <i class="fa-solid fa-bullhorn ml-1"></i> نشر إعلان جديد
-          </button>
-          <button id="adminTabBtnManage" onclick="switchAdminTab('manage')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-            <i class="fa-solid fa-sliders ml-1"></i> <span id="adminTabManageLabel">إدارة وتعديل وحذف</span>
-          </button>
-          <button id="adminTabBtnUsers" onclick="switchAdminTab('users')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-            <i class="fa-solid fa-users-gear ml-1"></i> <span id="adminTabUsersLabel">إدارة الحسابات</span>
+        <!-- أزرار التبويبات بتصميم متناسق (3 أزرار في الصف العلوي + زر الحسابات أسفلها بعرض كامل) -->
+        <div id="adminTabsWrapper" class="space-y-2 border-b pb-3">
+          <div id="adminTabsTopRow" class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <button id="adminTabBtnLectures" onclick="switchAdminTab('lectures')" class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-hamaGreen text-white transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-book"></i> <span id="adminTabLecturesLabel">إدارة المحاضرات</span>
+            </button>
+            <button id="adminTabBtnAnnouncements" onclick="switchAdminTab('announcements')" class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-bullhorn"></i> <span>نشر إعلان جديد</span>
+            </button>
+            <button id="adminTabBtnManage" onclick="switchAdminTab('manage')" class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-sliders"></i> <span id="adminTabManageLabel">إدارة وتعديل وحذف</span>
+            </button>
+          </div>
+          <button id="adminTabBtnUsers" onclick="switchAdminTab('users')" class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-users-gear"></i> <span id="adminTabUsersLabel">إدارة الحسابات</span>
           </button>
         </div>
 
-        <!-- تبويب 1: إضافة مادة (للموظف فقط) / رفع محاضرة (للمدرس فقط) -->
+        <!-- تبويب 1: إضافة مادة (للموظف فقط) / رفع محاضرة (للمدرس فقط) بعرض كامل بدون فراغ جانبي -->
         <div id="adminTabLectures" class="space-y-5">
           <!-- بطاقة إضافة مادة (تظهر للموظف المسؤول فقط) -->
-          <div id="adminAddSubjectCard" class="border rounded-xl p-4 bg-slate-50 space-y-3 max-w-xl">
+          <div id="adminAddSubjectCard" class="w-full border rounded-xl p-5 bg-slate-50 space-y-3">
             <h4 class="font-bold text-hamaBrown border-b pb-2"><i class="fa-solid fa-book-medical ml-1"></i> إضافة مادة دراسية جديدة</h4>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">اسم المادة:</label>
               <input type="text" id="newSubName" placeholder="مثال: البرمجة 1" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
             </div>
-            <div class="grid grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label class="block text-xs font-bold text-slate-600 mb-1">السنة:</label>
                 <select id="newSubYear" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
@@ -282,22 +290,28 @@
                 </select>
               </div>
             </div>
-            <button id="addSubBtn" onclick="addSubject()" class="w-full bg-hamaGreen hover:bg-emerald-700 text-white text-sm font-bold py-2 rounded-lg">إضافة المادة</button>
+            <button id="addSubBtn" onclick="addSubject()" class="w-full bg-hamaGreen hover:bg-emerald-700 text-white text-sm font-bold py-2.5 rounded-lg">إضافة المادة</button>
           </div>
 
-          <!-- بطاقة رفع محاضرة (تظهر للمدرس فقط في مقرراته وأقسامه المسندة) -->
-          <div id="adminAddLectureCard" class="border rounded-xl p-4 bg-slate-50 space-y-3 max-w-xl">
+          <!-- بطاقة رفع محاضرة (تظهر للمدرس فقط بعرض كامل متناسق) -->
+          <div id="adminAddLectureCard" class="w-full border rounded-xl p-5 bg-slate-50 space-y-3">
             <h4 class="font-bold text-hamaGreen border-b pb-2"><i class="fa-solid fa-file-arrow-up ml-1"></i> رفع محاضرة / ملف جديد</h4>
             <div id="teacherAssignedBanner" class="hidden bg-amber-50 border border-amber-200 text-amber-900 rounded-lg p-3 text-xs font-bold space-y-1"></div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">اختر المادة (المسندة لك فقط):</label>
               <select id="lecSubjectId" onchange="onTeacherSubjectChange()" class="w-full border rounded-lg px-2 py-2 text-sm bg-white font-semibold"></select>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">عنوان المحاضرة أو الملف:</label>
-              <input type="text" id="lecTitle" placeholder="مثال: المصفوفات" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">عنوان المحاضرة أو الملف:</label>
+                <input type="text" id="lecTitle" placeholder="مثال: المصفوفات" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">تاريخ المحاضرة:</label>
+                <input type="date" id="lecDate" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+              </div>
             </div>
-            <div class="grid grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label class="block text-xs font-bold text-slate-600 mb-1">رقم المحاضرة (1 فأكثر):</label>
                 <input type="number" id="lecNum" value="1" min="1" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
@@ -306,10 +320,6 @@
                 <label class="block text-xs font-bold text-slate-600 mb-1">القسم (نظري / عملي):</label>
                 <select id="lecCat" class="w-full border rounded-lg px-2 py-2 text-sm bg-white font-semibold"></select>
               </div>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">تاريخ المحاضرة:</label>
-              <input type="date" id="lecDate" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">اختر ملف PDF أو صورة من جهازك:</label>
@@ -332,7 +342,7 @@
             <button id="addLecBtn" onclick="addLecture()" class="w-full bg-hamaBrown hover:bg-amber-950 text-white text-sm font-bold py-2.5 rounded-lg">رفع ونشر المحاضرة</button>
           </div>
         </div>
-        <!-- نهاية تبويب 1 -->
+        <!-- نهاية القسم 1 -->
         <!-- تبويب 2: إضافة إعلان (للموظف المسؤول فقط) -->
         <div id="adminTabAnnouncements" class="hidden border rounded-xl p-5 bg-slate-50 space-y-4">
           <h4 class="font-bold text-hamaBrown border-b pb-2"><i class="fa-solid fa-bullhorn ml-1"></i> نشر إعلان أو تبليغ رسمي</h4>
@@ -494,7 +504,13 @@
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-600 mb-1">كلمة المرور (6 أحرف فأكثر):</label>
-                <input type="password" id="newUserPass" placeholder="••••••" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+                <div class="relative">
+                  <input type="password" id="newUserPass" placeholder="••••••" class="w-full border rounded-lg pr-3 pl-9 py-2 text-sm bg-white">
+                  <button type="button" onclick="togglePasswordVisibility('newUserPass', this)" title="إظهار كلمة المرور"
+                          class="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-hamaGreen px-1">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -561,7 +577,7 @@
       </div>
     </div>
   </div>
-
+  <!-- نهاية القسم 2 -->
   <script>
     const SUPABASE_URL = 'https://zesmqhhqhbinhhmmtgkk.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inplc21xaGhxaGJpbmhobW10Z2trIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NzY4MzEsImV4cCI6MjExMDM1MjgzMX0.PokJmQ1aWoZSGoq5C5oEyaYsyB_MLH2nY-nxv8lUwUE';
@@ -1321,6 +1337,23 @@
     function selectSemester(s) { state.semester = s; render(); }
     function selectSubject(id) { state.subjectId = id; state.category = 'theoretical'; render(); }
     function selectCategory(cat) { state.category = cat; render(); }
+
+    // --- دوال إظهار وإخفاء كلمة المرور (العين السحرية) ---
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (icon) icon.className = 'fa-regular fa-eye-slash';
+        btn.title = 'إخفاء كلمة المرور';
+      } else {
+        input.type = 'password';
+        if (icon) icon.className = 'fa-regular fa-eye';
+        btn.title = 'إظهار كلمة المرور';
+      }
+    }
+
     // --- دوال التحكم في الملف المختار ---
     function handleFileSelect(inputId, barId, nameId) {
       const input = document.getElementById(inputId);
@@ -1504,7 +1537,7 @@
       document.getElementById('previewBody').innerHTML = '';
     }
 
-    // --- دوال لوحة التحكم المفصولة حسب الدور ---
+    // --- دوال لوحة التحكم المفصولة والمتناسقة حسب الدور ---
     function openAdminModal(preSubId = null, preCat = null, activeTab = null) {
       document.getElementById('adminModal').classList.remove('hidden');
       document.getElementById('adminModal').classList.add('flex');
@@ -1514,6 +1547,12 @@
     function closeAdminModal() {
       document.getElementById('adminModal').classList.add('hidden');
       document.getElementById('adminModal').classList.remove('flex');
+    }
+
+    function setAdminTabBtnStyle(btn, isActive, activeColors) {
+      const isHidden = btn.classList.contains('hidden');
+      const colors = isActive ? activeColors : 'bg-slate-100 text-slate-700 hover:bg-slate-200';
+      btn.className = `w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 ${colors} ${isHidden ? 'hidden' : ''}`;
     }
 
     function switchAdminTab(tab) {
@@ -1535,34 +1574,33 @@
       const mngBtn = document.getElementById('adminTabBtnManage');
       const usrBtn = document.getElementById('adminTabBtnUsers');
 
-      const inactiveClass = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
-
       lecTab.classList.add('hidden');
       annTab.classList.add('hidden');
       mngTab.classList.add('hidden');
       usrTab.classList.add('hidden');
-      lecBtn.className = inactiveClass;
-      annBtn.className = inactiveClass;
-      mngBtn.className = inactiveClass;
-      usrBtn.className = inactiveClass;
+
+      setAdminTabBtnStyle(lecBtn, false, '');
+      setAdminTabBtnStyle(annBtn, false, '');
+      setAdminTabBtnStyle(mngBtn, false, '');
+      setAdminTabBtnStyle(usrBtn, false, '');
 
       if (tab === 'lectures') {
         lecTab.classList.remove('hidden');
-        lecBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-hamaGreen text-white transition';
+        setAdminTabBtnStyle(lecBtn, true, 'bg-hamaGreen text-white');
       } else if (tab === 'announcements') {
         annTab.classList.remove('hidden');
-        annBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-hamaBrown text-white transition';
+        setAdminTabBtnStyle(annBtn, true, 'bg-hamaBrown text-white');
         if (document.querySelectorAll('.ann-student-input').length === 0) {
           resetStudentInputRows();
         }
         updateAnnouncementFormFields();
       } else if (tab === 'manage') {
         mngTab.classList.remove('hidden');
-        mngBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-white transition';
+        setAdminTabBtnStyle(mngBtn, true, 'bg-slate-800 text-white');
         renderAdminManageTab();
       } else if (tab === 'users') {
         usrTab.classList.remove('hidden');
-        usrBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-700 text-white transition';
+        setAdminTabBtnStyle(usrBtn, true, 'bg-indigo-700 text-white');
         setupUsersTabUI();
         renderUsersList();
       }
@@ -1592,6 +1630,7 @@
       const addLecCard = document.getElementById('adminAddLectureCard');
       const teacherBanner = document.getElementById('teacherAssignedBanner');
 
+      const topRow = document.getElementById('adminTabsTopRow');
       const tabLecturesBtn = document.getElementById('adminTabBtnLectures');
       const tabAnnouncementsBtn = document.getElementById('adminTabBtnAnnouncements');
       const tabManageBtn = document.getElementById('adminTabBtnManage');
@@ -1600,6 +1639,7 @@
       let defaultTab = 'lectures';
 
       if (isSuperAdmin()) {
+        topRow.classList.add('hidden');
         tabLecturesBtn.classList.add('hidden');
         tabAnnouncementsBtn.classList.add('hidden');
         tabManageBtn.classList.add('hidden');
@@ -1607,6 +1647,8 @@
         document.getElementById('adminTabUsersLabel').textContent = 'إدارة حسابات الموظفين المسؤولين';
         defaultTab = 'users';
       } else if (isStaff()) {
+        topRow.classList.remove('hidden');
+        topRow.className = 'grid grid-cols-1 sm:grid-cols-3 gap-2';
         tabLecturesBtn.classList.remove('hidden');
         tabAnnouncementsBtn.classList.remove('hidden');
         tabManageBtn.classList.remove('hidden');
@@ -1620,6 +1662,8 @@
         addLecCard.classList.add('hidden');
         defaultTab = activeTab || 'announcements';
       } else if (isTeacher()) {
+        topRow.classList.remove('hidden');
+        topRow.className = 'grid grid-cols-1 sm:grid-cols-2 gap-2';
         tabLecturesBtn.classList.remove('hidden');
         tabAnnouncementsBtn.classList.add('hidden');
         tabManageBtn.classList.remove('hidden');
@@ -1661,7 +1705,7 @@
       resetStudentInputRows();
       switchAdminTab(activeTab || defaultTab);
     }
-
+    // --- نهاية القسم 3 ---
     // --- دوال إسناد المقررات المتعددة للمدرس ---
     function buildSubjectOptionsHtml(selectedSubId = '') {
       if (subjects.length === 0) {
@@ -1908,7 +1952,13 @@
         </div>
         <div>
           <label class="block text-xs font-bold text-slate-600 mb-1">كلمة مرور جديدة (اتركها فارغة للإبقاء على الحالية):</label>
-          <input type="password" id="editUserPass" placeholder="6 أحرف فأكثر عند التغيير" class="w-full border rounded-lg px-3 py-2 text-sm">
+          <div class="relative">
+            <input type="password" id="editUserPass" placeholder="6 أحرف فأكثر عند التغيير" class="w-full border rounded-lg pr-3 pl-10 py-2 text-sm">
+            <button type="button" onclick="togglePasswordVisibility('editUserPass', this)" title="إظهار كلمة المرور"
+                    class="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-hamaGreen px-1">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
         </div>
         ${u.role === 'teacher' ? `
           <div class="bg-amber-50 p-3.5 rounded-xl border border-amber-200 space-y-3">
@@ -2228,6 +2278,7 @@
       return (str || '').replace(/\s+/g, ' ').trim().toLowerCase();
     }
 
+    // التحقق من رقم المحاضرة (يمنع 0 ويمنع تكرار الرقم، ويسمح بتكرار العنوان مثل "المصفوفات" بأرقام مختلفة)
     function validateLectureInput({ subject_id, category, rawNum, title, excludeId = null }) {
       const lecture_number = Number(rawNum);
       if (!rawNum || !Number.isInteger(lecture_number) || lecture_number <= 0) {
@@ -2248,18 +2299,6 @@
       );
       if (duplicateNum) {
         alert(`خطأ: المحاضرة رقم (${lecture_number}) موجودة مسبقاً في ${catLabel} لهذه المادة! يرجى اختيار رقم غير مكرر.`);
-        return null;
-      }
-
-      const cleanTitle = normalizeText(title);
-      const duplicateTitle = lectures.some(l =>
-        l.id !== excludeId &&
-        l.subject_id === subject_id &&
-        l.category === category &&
-        normalizeText(l.title) === cleanTitle
-      );
-      if (duplicateTitle) {
-        alert(`خطأ: عنوان المحاضرة "${title}" موجود مسبقاً في ${catLabel} لهذه المادة! يرجى اختيار عنوان مختلف.`);
         return null;
       }
 
