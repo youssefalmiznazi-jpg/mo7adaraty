@@ -54,7 +54,7 @@
         <span class="text-xs text-slate-500">الأرشيف الأكاديمي والتبليغات الرسمية</span>
       </div>
 
-      <!-- أقصى اليسار: أزرار المشاركة والـ QR + زر المدير + شعار الجامعة -->
+      <!-- أقصى اليسار: أزرار المشاركة والـ QR + زر الإدارة + شعار الجامعة -->
       <div class="flex items-center gap-1.5 sm:gap-2.5">
         <button onclick="openQRModal()" title="إظهار رمز QR للمشاركة"
                 class="text-xs sm:text-sm bg-emerald-50 hover:bg-emerald-100 text-hamaGreen border border-emerald-200 px-2.5 py-2 rounded-lg font-bold transition flex items-center gap-1.5">
@@ -197,7 +197,7 @@
     </div>
   </div>
 
-  <!-- نافذة لوحة تحكم المدير / الموظف / المدرس -->
+  <!-- نافذة لوحة التحكم -->
   <div id="adminModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 overflow-y-auto">
     <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden my-8">
       <div class="px-5 py-4 bg-hamaBrown text-white flex items-center justify-between">
@@ -211,7 +211,7 @@
 
       <!-- نموذج تسجيل الدخول -->
       <div id="adminLoginForm" class="p-6 space-y-4">
-        <p class="text-sm text-slate-600">سجّل الدخول بحسابك (المدير العام، الموظف المسؤول، أو حساب المدرس) للوصول إلى صلاحياتك.</p>
+        <p class="text-sm text-slate-600">سجّل الدخول بحسابك (المدير العام، الموظف المسؤول، أو حساب المدرس) للوصول إلى لوحة التحكم الخاصة بك.</p>
         <div>
           <label class="block text-sm font-semibold mb-1">البريد الإلكتروني</label>
           <input type="email" id="adminEmail" placeholder="example@gmail.com" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-hamaGreen/40 outline-none">
@@ -225,7 +225,7 @@
         </button>
       </div>
 
-      <!-- لوحة الإدارة حسب الصلاحية -->
+      <!-- محتوى لوحة الإدارة المفصول حسب الدور -->
       <div id="adminDashboardContent" class="hidden p-5 sm:p-6 space-y-5 max-h-[82vh] overflow-y-auto">
         <div class="flex flex-wrap items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 p-3 rounded-xl">
           <div class="flex flex-wrap items-center gap-2">
@@ -238,27 +238,27 @@
           <button onclick="logoutAdmin()" class="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1.5 rounded-lg font-bold">تسجيل خروج</button>
         </div>
 
-        <!-- تبويبات لوحة التحكم -->
+        <!-- أزرار التبويبات -->
         <div class="flex flex-wrap gap-2 border-b pb-3">
           <button id="adminTabBtnLectures" onclick="switchAdminTab('lectures')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-hamaGreen text-white transition">
-            <i class="fa-solid fa-book ml-1"></i> <span id="adminTabLecturesLabel">المواد والمحاضرات</span>
+            <i class="fa-solid fa-book ml-1"></i> <span id="adminTabLecturesLabel">إدارة المحاضرات</span>
           </button>
           <button id="adminTabBtnAnnouncements" onclick="switchAdminTab('announcements')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
             <i class="fa-solid fa-bullhorn ml-1"></i> نشر إعلان جديد
           </button>
           <button id="adminTabBtnManage" onclick="switchAdminTab('manage')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-            <i class="fa-solid fa-sliders ml-1"></i> إدارة وتعديل وحذف
+            <i class="fa-solid fa-sliders ml-1"></i> <span id="adminTabManageLabel">إدارة وتعديل وحذف</span>
           </button>
           <button id="adminTabBtnUsers" onclick="switchAdminTab('users')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
             <i class="fa-solid fa-users-gear ml-1"></i> <span id="adminTabUsersLabel">إدارة الحسابات</span>
           </button>
         </div>
 
-        <!-- تبويب 1: المواد والمحاضرات -->
-        <div id="adminTabLectures" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- إضافة مادة (للمدير العام والموظف المسؤول فقط) -->
-          <div id="adminAddSubjectCard" class="border rounded-xl p-4 bg-slate-50 space-y-3">
-            <h4 class="font-bold text-hamaBrown border-b pb-2"><i class="fa-solid fa-book-medical ml-1"></i> إضافة مادة دراسية</h4>
+        <!-- تبويب 1: إضافة مادة (للموظف فقط) / رفع محاضرة (للمدرس فقط) -->
+        <div id="adminTabLectures" class="space-y-5">
+          <!-- بطاقة إضافة مادة (تظهر للموظف المسؤول فقط) -->
+          <div id="adminAddSubjectCard" class="border rounded-xl p-4 bg-slate-50 space-y-3 max-w-xl">
+            <h4 class="font-bold text-hamaBrown border-b pb-2"><i class="fa-solid fa-book-medical ml-1"></i> إضافة مادة دراسية جديدة</h4>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">اسم المادة:</label>
               <input type="text" id="newSubName" placeholder="مثال: البرمجة 1" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
@@ -285,13 +285,13 @@
             <button id="addSubBtn" onclick="addSubject()" class="w-full bg-hamaGreen hover:bg-emerald-700 text-white text-sm font-bold py-2 rounded-lg">إضافة المادة</button>
           </div>
 
-          <!-- رفع محاضرة (للمدير العام أو المدرس في مادته وقسمه فقط — مخفي عن الموظف المسؤول) -->
-          <div id="adminAddLectureCard" class="border rounded-xl p-4 bg-slate-50 space-y-3">
-            <h4 class="font-bold text-hamaGreen border-b pb-2"><i class="fa-solid fa-file-arrow-up ml-1"></i> رفع محاضرة / ملف</h4>
-            <div id="teacherAssignedBanner" class="hidden bg-amber-50 border border-amber-200 text-amber-900 rounded-lg p-2.5 text-xs font-bold"></div>
+          <!-- بطاقة رفع محاضرة (تظهر للمدرس فقط في مقرراته وأقسامه المسندة) -->
+          <div id="adminAddLectureCard" class="border rounded-xl p-4 bg-slate-50 space-y-3 max-w-xl">
+            <h4 class="font-bold text-hamaGreen border-b pb-2"><i class="fa-solid fa-file-arrow-up ml-1"></i> رفع محاضرة / ملف جديد</h4>
+            <div id="teacherAssignedBanner" class="hidden bg-amber-50 border border-amber-200 text-amber-900 rounded-lg p-3 text-xs font-bold space-y-1"></div>
             <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">اختر المادة (مع السنة والفصل):</label>
-              <select id="lecSubjectId" class="w-full border rounded-lg px-2 py-2 text-sm bg-white"></select>
+              <label class="block text-xs font-bold text-slate-600 mb-1">اختر المادة (المسندة لك فقط):</label>
+              <select id="lecSubjectId" onchange="onTeacherSubjectChange()" class="w-full border rounded-lg px-2 py-2 text-sm bg-white font-semibold"></select>
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">عنوان المحاضرة أو الملف:</label>
@@ -304,10 +304,7 @@
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-600 mb-1">القسم (نظري / عملي):</label>
-                <select id="lecCat" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                  <option value="theoretical">القسم النظري</option>
-                  <option value="practical">القسم العملي</option>
-                </select>
+                <select id="lecCat" class="w-full border rounded-lg px-2 py-2 text-sm bg-white font-semibold"></select>
               </div>
             </div>
             <div>
@@ -332,11 +329,11 @@
                 </div>
               </div>
             </div>
-            <button id="addLecBtn" onclick="addLecture()" class="w-full bg-hamaBrown hover:bg-amber-950 text-white text-sm font-bold py-2 rounded-lg">رفع ونشر المحاضرة</button>
+            <button id="addLecBtn" onclick="addLecture()" class="w-full bg-hamaBrown hover:bg-amber-950 text-white text-sm font-bold py-2.5 rounded-lg">رفع ونشر المحاضرة</button>
           </div>
         </div>
-
-        <!-- تبويب 2: إضافة إعلان (للمدير العام والموظف المسؤول فقط) -->
+        <!-- نهاية تبويب 1 -->
+        <!-- تبويب 2: إضافة إعلان (للموظف المسؤول فقط) -->
         <div id="adminTabAnnouncements" class="hidden border rounded-xl p-5 bg-slate-50 space-y-4">
           <h4 class="font-bold text-hamaBrown border-b pb-2"><i class="fa-solid fa-bullhorn ml-1"></i> نشر إعلان أو تبليغ رسمي</h4>
 
@@ -475,14 +472,14 @@
           </button>
         </div>
 
-        <!-- تبويب 3: إدارة وتعديل وحذف الكل -->
+        <!-- تبويب 3: إدارة وتعديل وحذف (المواد والإعلانات للموظف / المحاضرات المسندة للمدرس) -->
         <div id="adminTabManage" class="hidden space-y-5">
           <div id="adminManageContainer"></div>
         </div>
 
-        <!-- تبويب 4: إدارة الحسابات (الموظفين للمدير العام / المدرسين للموظف المسؤول) -->
+        <!-- تبويب 4: إدارة الحسابات (الموظفين للمدير العام / المدرسين والمقررات المتعددة للموظف) -->
         <div id="adminTabUsers" class="hidden space-y-5">
-          <div class="border rounded-xl p-4 bg-slate-50 space-y-3">
+          <div class="border rounded-xl p-4 bg-slate-50 space-y-4">
             <h4 id="createUserFormTitle" class="font-bold text-hamaGreen border-b pb-2">
               <i class="fa-solid fa-user-plus ml-1"></i> إنشاء حساب جديد
             </h4>
@@ -501,19 +498,17 @@
               </div>
             </div>
 
-            <!-- حقول المدرس (تظهر للموظف المسؤول فقط) -->
-            <div id="newUserTeacherFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 bg-amber-50 p-3 rounded-xl border border-amber-200">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">المادة الدراسية المخصصة للمدرس:</label>
-                <select id="newUserSubjectId" class="w-full border rounded-lg px-2 py-2 text-sm bg-white"></select>
+            <!-- إسناد المقررات المتعددة للمدرس (يظهر للموظف المسؤول فقط) -->
+            <div id="newUserTeacherAssignmentsBox" class="hidden bg-amber-50 p-3.5 rounded-xl border border-amber-200 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <label class="text-xs sm:text-sm font-bold text-slate-800">
+                  <i class="fa-solid fa-book-bookmark text-hamaBrown ml-1"></i> المقررات والأقسام الموكلة للمدرس:
+                </label>
+                <button type="button" onclick="addAssignmentRow('newUserAssignmentsList')" class="text-xs bg-hamaGreen hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-plus"></i> إضافة مقرر لهذا المدرس
+                </button>
               </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">القسم المخصص حصراً:</label>
-                <select id="newUserSection" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                  <option value="theoretical">مدرس قسم نظري</option>
-                  <option value="practical">مدرس قسم عملي</option>
-                </select>
-              </div>
+              <div id="newUserAssignmentsList" class="space-y-2"></div>
             </div>
 
             <button id="createUserBtn" onclick="createUserAccount()" class="w-full bg-hamaGreen hover:bg-emerald-700 text-white text-sm font-bold py-2.5 rounded-lg transition">
@@ -522,17 +517,17 @@
           </div>
 
           <div class="border rounded-xl p-4 bg-slate-50">
-            <h4 class="font-bold text-hamaBrown mb-3"><i class="fa-solid fa-users ml-1"></i> الحسابات المسجلة</h4>
-            <div id="usersListContainer" class="space-y-2 max-h-64 overflow-y-auto"></div>
+            <h4 id="usersListHeading" class="font-bold text-hamaBrown mb-3"><i class="fa-solid fa-users ml-1"></i> الحسابات المسجلة</h4>
+            <div id="usersListContainer" class="space-y-2.5 max-h-72 overflow-y-auto"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- نافذة التعديل (للمواد والمحاضرات والإعلانات والحسابات) -->
+  <!-- نافذة التعديل (للمواد والمحاضرات والإعلانات والحسابات وتكليفات المدرسين) -->
   <div id="editModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden my-8">
+    <div class="bg-white rounded-2xl w-full max-w-2xl shadow-2xl overflow-hidden my-8">
       <div class="px-5 py-3.5 bg-slate-800 text-white flex items-center justify-between">
         <h3 id="editModalTitle" class="font-bold text-base flex items-center gap-2">
           <i class="fa-solid fa-pen-to-square"></i> تعديل
@@ -566,6 +561,7 @@
       </div>
     </div>
   </div>
+
   <script>
     const SUPABASE_URL = 'https://zesmqhhqhbinhhmmtgkk.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inplc21xaGhxaGJpbmhobW10Z2trIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NzY4MzEsImV4cCI6MjExMDM1MjgzMX0.PokJmQ1aWoZSGoq5C5oEyaYsyB_MLH2nY-nxv8lUwUE';
@@ -578,6 +574,7 @@
     let announcements = [];
     let customOptions = [];
     let managedUsers = [];
+    let allTeacherAssignments = [];
 
     let currentUser = null;
     let currentProfile = null;
@@ -599,8 +596,9 @@
 
     const yearNames = { 1: 'السنة الأولى', 2: 'السنة الثانية', 3: 'السنة الثالثة', 4: 'السنة الرابعة', 5: 'السنة الخامسة' };
     const sectionLabels = { theoretical: 'القسم النظري', practical: 'القسم العملي', both: 'نظري وعملي' };
+    const assignmentSectionLabels = { theoretical: 'قسم نظري فقط', practical: 'قسم عملي فقط', both: 'كلا القسمين (نظري وعملي)' };
     const examTypeLabels = { theoretical: 'امتحان نظري', practical: 'امتحان عملي' };
-    const roleLabels = { super_admin: 'المدير العام', staff: 'موظف مسؤول', teacher: 'مدرس مادة' };
+    const roleLabels = { super_admin: 'المدير العام', staff: 'موظف مسؤول', teacher: 'مدرس' };
 
     const builtInAnnouncementMeta = {
       meeting:       { label: 'إعلان عن اجتماع',            icon: 'fa-users',          badge: 'bg-blue-100 text-blue-800 border-blue-200' },
@@ -615,18 +613,27 @@
       exam_schedule: { label: 'إعلان برنامج الامتحان',      icon: 'fa-file-signature', badge: 'bg-rose-100 text-rose-800 border-rose-200' }
     };
 
-    // --- دوال التحقق من الصلاحيات ---
     function isSuperAdmin() { return currentProfile && currentProfile.role === 'super_admin'; }
     function isStaff() { return currentProfile && currentProfile.role === 'staff'; }
     function isTeacher() { return currentProfile && currentProfile.role === 'teacher'; }
-    function canManageSubjectsAndAnnouncements() { return isSuperAdmin() || isStaff(); }
+
+    function canManageSubjectsAndAnnouncements() { return isStaff(); }
     function canManageUsers() { return isSuperAdmin() || isStaff(); }
+
+    function getMyAssignments() {
+      if (!isTeacher() || !currentUser) return [];
+      return allTeacherAssignments.filter(a => a.teacher_id === currentUser.id);
+    }
+
+    function getTeacherAssignmentForSubject(subjectId) {
+      return getMyAssignments().find(a => a.subject_id === subjectId) || null;
+    }
+
     function canManageLecture(subjectId, category) {
-      if (isSuperAdmin()) return true;
-      if (isTeacher()) {
-        return currentProfile.subject_id === subjectId && currentProfile.section === category;
-      }
-      return false; // الموظف المسؤول ممنوع من إدارة المحاضرات
+      if (!isTeacher()) return false;
+      const assignment = getTeacherAssignmentForSubject(subjectId);
+      if (!assignment) return false;
+      return assignment.section === 'both' || assignment.section === category;
     }
 
     function formatSubjectFullLabel(sub) {
@@ -651,7 +658,6 @@
       return FALLBACK_PUBLIC_URL;
     }
 
-    // --- تهيئة التطبيق ---
     async function initApp() {
       const { data: { session } } = await sb.auth.getSession();
       currentUser = session ? session.user : null;
@@ -666,7 +672,6 @@
         const newUserId = newUser ? newUser.id : null;
         currentUser = newUser;
 
-        // عدم إعادة ضبط القوائم عند العودة من منتقي الملفات أو تحديث التوكن
         if (newUserId !== lastAuthUserId) {
           lastAuthUserId = newUserId;
           if (currentUser) {
@@ -674,6 +679,7 @@
           } else {
             currentProfile = null;
             managedUsers = [];
+            allTeacherAssignments = [];
           }
           updateStats();
           updateAdminView();
@@ -690,26 +696,23 @@
         return;
       }
       const { data, error } = await sb.from('app_users').select('*').eq('id', currentUser.id).single();
-      if (!error && data) {
-        currentProfile = data;
-      } else {
-        currentProfile = null;
-      }
-      if (canManageUsers()) {
-        await loadManagedUsers();
-      } else {
-        managedUsers = [];
-      }
+      currentProfile = (!error && data) ? data : null;
+      await loadRoleData();
     }
 
-    async function loadManagedUsers() {
-      if (!canManageUsers()) {
+    async function loadRoleData() {
+      if (canManageUsers()) {
+        const { data: usersData } = await sb.from('app_users').select('*').order('created_at', { ascending: false });
+        managedUsers = usersData || [];
+      } else {
         managedUsers = [];
-        return;
       }
-      const { data, error } = await sb.from('app_users').select('*').order('created_at', { ascending: false });
-      if (!error) {
-        managedUsers = data || [];
+
+      if (isStaff() || isTeacher()) {
+        const { data: assignData } = await sb.from('teacher_assignments').select('*').order('created_at', { ascending: true });
+        allTeacherAssignments = assignData || [];
+      } else {
+        allTeacherAssignments = [];
       }
     }
 
@@ -728,12 +731,12 @@
       if (!annRes.error) announcements = annRes.data || [];
       if (!optRes.error) customOptions = optRes.data || [];
 
-      if (canManageUsers()) {
-        await loadManagedUsers();
+      if (currentProfile) {
+        await loadRoleData();
       }
 
       populateDynamicSelects();
-      populateSubjectDropdowns();
+      populateTeacherLectureSubjects();
       updateStats();
       render();
       if (currentProfile) {
@@ -742,43 +745,62 @@
       }
     }
 
-    function populateSubjectDropdowns(forcedSubId = null) {
+    function populateTeacherLectureSubjects(forcedSubId = null) {
       const lecSelect = document.getElementById('lecSubjectId');
-      if (lecSelect) {
-        const previousVal = lecSelect.value;
-        if (isTeacher()) {
-          const assignedSub = subjects.find(s => s.id === currentProfile.subject_id);
-          if (assignedSub) {
-            lecSelect.innerHTML = `<option value="${assignedSub.id}">${formatSubjectFullLabel(assignedSub)}</option>`;
-            lecSelect.value = assignedSub.id;
-          } else {
-            lecSelect.innerHTML = `<option value="">لم يتم العثور على المادة المخصصة</option>`;
-          }
-          lecSelect.disabled = true;
-        } else {
-          lecSelect.disabled = false;
-          if (subjects.length === 0) {
-            lecSelect.innerHTML = `<option value="">أضف مادة دراسية أولاً...</option>`;
-          } else {
-            lecSelect.innerHTML = subjects.map(s => `<option value="${s.id}">${formatSubjectFullLabel(s)}</option>`).join('');
-            const targetId = forcedSubId || previousVal;
-            if (targetId && [...lecSelect.options].some(op => op.value === targetId)) {
-              lecSelect.value = targetId;
-            }
-          }
+      if (!lecSelect || !isTeacher()) return;
+
+      const previousVal = lecSelect.value;
+      const myAssigns = getMyAssignments();
+      const assignedSubs = myAssigns
+        .map(a => subjects.find(s => s.id === a.subject_id))
+        .filter(Boolean);
+
+      if (assignedSubs.length === 0) {
+        lecSelect.innerHTML = `<option value="">لم يتم إسناد أي مادة لك بعد — راجع الموظف المسؤول</option>`;
+        lecSelect.disabled = true;
+      } else {
+        lecSelect.disabled = false;
+        lecSelect.innerHTML = assignedSubs.map(s => `<option value="${s.id}">${formatSubjectFullLabel(s)}</option>`).join('');
+        const targetId = forcedSubId || previousVal;
+        if (targetId && [...lecSelect.options].some(op => op.value === targetId)) {
+          lecSelect.value = targetId;
         }
       }
+      onTeacherSubjectChange();
+    }
 
-      const teacherSubSelect = document.getElementById('newUserSubjectId');
-      if (teacherSubSelect) {
-        const prevTeacherSub = teacherSubSelect.value;
-        if (subjects.length === 0) {
-          teacherSubSelect.innerHTML = `<option value="">أضف مادة دراسية أولاً...</option>`;
-        } else {
-          teacherSubSelect.innerHTML = subjects.map(s => `<option value="${s.id}">${formatSubjectFullLabel(s)}</option>`).join('');
-          if (prevTeacherSub && [...teacherSubSelect.options].some(op => op.value === prevTeacherSub)) {
-            teacherSubSelect.value = prevTeacherSub;
-          }
+    function onTeacherSubjectChange(preferredCat = null) {
+      if (!isTeacher()) return;
+      const lecSelect = document.getElementById('lecSubjectId');
+      const catSelect = document.getElementById('lecCat');
+      if (!lecSelect || !catSelect) return;
+
+      const selectedSubId = lecSelect.value;
+      const assignment = getTeacherAssignmentForSubject(selectedSubId);
+
+      if (!assignment) {
+        catSelect.innerHTML = `<option value="">غير مخصص</option>`;
+        catSelect.disabled = true;
+        return;
+      }
+
+      if (assignment.section === 'theoretical') {
+        catSelect.innerHTML = `<option value="theoretical">القسم النظري (مخصص لك فقط)</option>`;
+        catSelect.value = 'theoretical';
+        catSelect.disabled = true;
+      } else if (assignment.section === 'practical') {
+        catSelect.innerHTML = `<option value="practical">القسم العملي (مخصص لك فقط)</option>`;
+        catSelect.value = 'practical';
+        catSelect.disabled = true;
+      } else {
+        const prevCat = preferredCat || catSelect.value;
+        catSelect.innerHTML = `
+          <option value="theoretical">القسم النظري</option>
+          <option value="practical">القسم العملي</option>
+        `;
+        catSelect.disabled = false;
+        if (prevCat === 'theoretical' || prevCat === 'practical') {
+          catSelect.value = prevCat;
         }
       }
     }
@@ -822,15 +844,10 @@
       document.getElementById('annBadgeCount').textContent = announcements.length;
 
       const adminBtnText = document.getElementById('adminBtnText');
-      if (!currentProfile) {
-        adminBtnText.textContent = 'دخول الإدارة';
-      } else if (isSuperAdmin()) {
-        adminBtnText.textContent = 'المدير العام';
-      } else if (isStaff()) {
-        adminBtnText.textContent = 'الموظف المسؤول';
-      } else if (isTeacher()) {
-        adminBtnText.textContent = 'حساب المدرس';
-      }
+      if (!currentProfile) adminBtnText.textContent = 'دخول الإدارة';
+      else if (isSuperAdmin()) adminBtnText.textContent = 'المدير العام';
+      else if (isStaff()) adminBtnText.textContent = 'الموظف المسؤول';
+      else if (isTeacher()) adminBtnText.textContent = 'حساب المدرس';
     }
 
     function switchMainView(view) {
@@ -865,7 +882,6 @@
       render();
     }
 
-    // --- العرض الرئيسي ---
     function render() {
       updateStats();
       updateNavButtons();
@@ -1093,7 +1109,6 @@
       `;
     }
 
-    // --- عرض الإعلانات ---
     function renderAnnouncementsView(container) {
       const filtered = announcements.filter(ann => {
         const matchType = state.annFilterType === 'all' || ann.type === state.annFilterType;
@@ -1306,7 +1321,6 @@
     function selectSemester(s) { state.semester = s; render(); }
     function selectSubject(id) { state.subjectId = id; state.category = 'theoretical'; render(); }
     function selectCategory(cat) { state.category = cat; render(); }
-
     // --- دوال التحكم في الملف المختار ---
     function handleFileSelect(inputId, barId, nameId) {
       const input = document.getElementById(inputId);
@@ -1490,8 +1504,8 @@
       document.getElementById('previewBody').innerHTML = '';
     }
 
-    // --- دوال لوحة التحكم حسب الأدوار ---
-    function openAdminModal(preSubId = null, preCat = null, activeTab = 'lectures') {
+    // --- دوال لوحة التحكم المفصولة حسب الدور ---
+    function openAdminModal(preSubId = null, preCat = null, activeTab = null) {
       document.getElementById('adminModal').classList.remove('hidden');
       document.getElementById('adminModal').classList.add('flex');
       updateAdminView(preSubId, preCat, activeTab);
@@ -1503,9 +1517,13 @@
     }
 
     function switchAdminTab(tab) {
-      // منع الوصول لتبويبات غير مصرح بها
-      if (tab === 'announcements' && !canManageSubjectsAndAnnouncements()) tab = 'lectures';
-      if (tab === 'users' && !canManageUsers()) tab = 'lectures';
+      if (isSuperAdmin()) {
+        tab = 'users';
+      } else if (isStaff()) {
+        if (!['lectures', 'announcements', 'manage', 'users'].includes(tab)) tab = 'announcements';
+      } else if (isTeacher()) {
+        if (!['lectures', 'manage'].includes(tab)) tab = 'lectures';
+      }
 
       const lecTab = document.getElementById('adminTabLectures');
       const annTab = document.getElementById('adminTabAnnouncements');
@@ -1550,7 +1568,7 @@
       }
     }
 
-    function updateAdminView(preSubId = null, preCat = null, activeTab = 'lectures') {
+    function updateAdminView(preSubId = null, preCat = null, activeTab = null) {
       const loginForm = document.getElementById('adminLoginForm');
       const dashContent = document.getElementById('adminDashboardContent');
       const modalTitle = document.getElementById('adminModalHeaderTitle');
@@ -1567,95 +1585,195 @@
 
       document.getElementById('adminUserDisplayName').textContent = currentProfile.full_name || currentProfile.email;
       const roleBadge = document.getElementById('adminRoleBadge');
-      if (isTeacher()) {
-        roleBadge.textContent = `مدرس (${sectionLabels[currentProfile.section] || ''})`;
-      } else {
-        roleBadge.textContent = roleLabels[currentProfile.role] || currentProfile.role;
-      }
-      modalTitle.textContent = `لوحة التحكم — ${roleBadge.textContent}`;
+      roleBadge.textContent = roleLabels[currentProfile.role] || currentProfile.role;
+      modalTitle.textContent = `لوحة تحكم — ${roleBadge.textContent}`;
 
-      // إظهار وإخفاء التبويبات والبطاقات حسب الدور
       const addSubCard = document.getElementById('adminAddSubjectCard');
       const addLecCard = document.getElementById('adminAddLectureCard');
       const teacherBanner = document.getElementById('teacherAssignedBanner');
-      const lecCatSelect = document.getElementById('lecCat');
 
       const tabLecturesBtn = document.getElementById('adminTabBtnLectures');
       const tabAnnouncementsBtn = document.getElementById('adminTabBtnAnnouncements');
       const tabManageBtn = document.getElementById('adminTabBtnManage');
       const tabUsersBtn = document.getElementById('adminTabBtnUsers');
 
-      if (isSuperAdmin()) {
-        tabLecturesBtn.classList.remove('hidden');
-        tabAnnouncementsBtn.classList.remove('hidden');
-        tabManageBtn.classList.remove('hidden');
-        tabUsersBtn.classList.remove('hidden');
-        document.getElementById('adminTabLecturesLabel').textContent = 'المواد والمحاضرات';
-        document.getElementById('adminTabUsersLabel').textContent = 'إدارة الموظفين والحسابات';
+      let defaultTab = 'lectures';
 
-        addSubCard.classList.remove('hidden');
-        addLecCard.classList.remove('hidden');
-        teacherBanner.classList.add('hidden');
-        lecCatSelect.disabled = false;
+      if (isSuperAdmin()) {
+        tabLecturesBtn.classList.add('hidden');
+        tabAnnouncementsBtn.classList.add('hidden');
+        tabManageBtn.classList.add('hidden');
+        tabUsersBtn.classList.remove('hidden');
+        document.getElementById('adminTabUsersLabel').textContent = 'إدارة حسابات الموظفين المسؤولين';
+        defaultTab = 'users';
       } else if (isStaff()) {
         tabLecturesBtn.classList.remove('hidden');
         tabAnnouncementsBtn.classList.remove('hidden');
         tabManageBtn.classList.remove('hidden');
         tabUsersBtn.classList.remove('hidden');
+
         document.getElementById('adminTabLecturesLabel').textContent = 'إضافة مادة دراسية';
-        document.getElementById('adminTabUsersLabel').textContent = 'إدارة حسابات المدرسين';
+        document.getElementById('adminTabManageLabel').textContent = 'إدارة المواد والإعلانات';
+        document.getElementById('adminTabUsersLabel').textContent = 'إدارة حسابات المدرسين وتوزيع المقررات';
 
         addSubCard.classList.remove('hidden');
-        addLecCard.classList.add('hidden'); // الموظف المسؤول لا يدير المحاضرات
-        teacherBanner.classList.add('hidden');
+        addLecCard.classList.add('hidden');
+        defaultTab = activeTab || 'announcements';
       } else if (isTeacher()) {
         tabLecturesBtn.classList.remove('hidden');
         tabAnnouncementsBtn.classList.add('hidden');
         tabManageBtn.classList.remove('hidden');
         tabUsersBtn.classList.add('hidden');
-        document.getElementById('adminTabLecturesLabel').textContent = 'رفع محاضرة / ملف';
 
-        addSubCard.classList.add('hidden'); // المدرس لا يضيف مواد
+        document.getElementById('adminTabLecturesLabel').textContent = 'إدارة المحاضرات والملفات';
+        document.getElementById('adminTabManageLabel').textContent = 'محاضراتي (تعديل وحذف)';
+
+        addSubCard.classList.add('hidden');
         addLecCard.classList.remove('hidden');
 
-        const assignedSub = subjects.find(s => s.id === currentProfile.subject_id);
+        const myAssigns = getMyAssignments();
         teacherBanner.classList.remove('hidden');
-        teacherBanner.innerHTML = `<i class="fa-solid fa-lock ml-1"></i> صلاحيتك محصورة في: <u>${assignedSub ? formatSubjectFullLabel(assignedSub) : 'مادة غير محددة'}</u> — <u>${sectionLabels[currentProfile.section] || ''}</u>`;
+        if (myAssigns.length === 0) {
+          teacherBanner.innerHTML = `<i class="fa-solid fa-triangle-exclamation ml-1"></i> لا توجد مقررات مسندة لحسابك حالياً. يرجى مراجعة الموظف المسؤول.`;
+        } else {
+          teacherBanner.innerHTML = `
+            <div><i class="fa-solid fa-lock ml-1"></i> المقررات والأقسام الموكلة إليك:</div>
+            <div class="flex flex-wrap gap-1.5 mt-1">
+              ${myAssigns.map(a => {
+                const sub = subjects.find(s => s.id === a.subject_id);
+                return `<span class="bg-white border border-amber-300 px-2 py-0.5 rounded-md text-[11px]">${sub ? formatSubjectFullLabel(sub) : ''} (${assignmentSectionLabels[a.section] || a.section})</span>`;
+              }).join('')}
+            </div>
+          `;
+        }
 
-        lecCatSelect.value = currentProfile.section || 'theoretical';
-        lecCatSelect.disabled = true;
-      }
-
-      populateSubjectDropdowns(preSubId);
-      if (preCat && !isTeacher()) {
-        lecCatSelect.value = preCat;
+        populateTeacherLectureSubjects(preSubId);
+        if (preCat) onTeacherSubjectChange(preCat);
+        defaultTab = activeTab || 'lectures';
       }
 
       const lecDateInput = document.getElementById('lecDate');
-      if (!lecDateInput.value) lecDateInput.valueAsDate = new Date();
+      if (lecDateInput && !lecDateInput.value) lecDateInput.valueAsDate = new Date();
       const annDateInput = document.getElementById('annDate');
-      if (!annDateInput.value) annDateInput.valueAsDate = new Date();
+      if (annDateInput && !annDateInput.value) annDateInput.valueAsDate = new Date();
 
       populateDynamicSelects();
       resetStudentInputRows();
-      switchAdminTab(activeTab);
+      switchAdminTab(activeTab || defaultTab);
     }
 
-    // --- إدارة الحسابات (المدير العام ينشئ موظفاً / الموظف ينشئ مدرساً) ---
+    // --- دوال إسناد المقررات المتعددة للمدرس ---
+    function buildSubjectOptionsHtml(selectedSubId = '') {
+      if (subjects.length === 0) {
+        return `<option value="">لا توجد مواد مضافة بعد...</option>`;
+      }
+      return `<option value="">اختر المادة (السنة - الفصل)...</option>` +
+        subjects.map(s => `<option value="${s.id}" ${s.id === selectedSubId ? 'selected' : ''}>${formatSubjectFullLabel(s)}</option>`).join('');
+    }
+
+    function addAssignmentRow(containerId = 'newUserAssignmentsList', subjectId = '', section = 'theoretical') {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const row = document.createElement('div');
+      row.className = 'assignment-row grid grid-cols-1 sm:grid-cols-12 gap-2 items-center bg-white p-2 rounded-lg border border-amber-200';
+      row.innerHTML = `
+        <div class="sm:col-span-7">
+          <select class="assign-sub-select w-full border rounded-lg px-2 py-1.5 text-xs sm:text-sm bg-white font-semibold">
+            ${buildSubjectOptionsHtml(subjectId)}
+          </select>
+        </div>
+        <div class="sm:col-span-4">
+          <select class="assign-sec-select w-full border rounded-lg px-2 py-1.5 text-xs sm:text-sm bg-white font-semibold">
+            <option value="theoretical" ${section === 'theoretical' ? 'selected' : ''}>قسم نظري فقط</option>
+            <option value="practical" ${section === 'practical' ? 'selected' : ''}>قسم عملي فقط</option>
+            <option value="both" ${section === 'both' ? 'selected' : ''}>كلا القسمين (نظري وعملي)</option>
+          </select>
+        </div>
+        <div class="sm:col-span-1 flex justify-end">
+          <button type="button" onclick="removeAssignmentRow(this, '${containerId}')" class="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-2.5 py-1.5 rounded-lg text-xs font-bold w-full sm:w-auto" title="حذف هذا المقرر">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      `;
+      container.appendChild(row);
+    }
+
+    function removeAssignmentRow(btn, containerId) {
+      const container = document.getElementById(containerId);
+      const row = btn.closest('.assignment-row');
+      if (!container || !row) return;
+      if (container.children.length > 1) {
+        row.remove();
+      } else {
+        alert('يجب إسناد مقرر واحد على الأقل للمدرس.');
+      }
+    }
+
+    function resetAssignmentRows(containerId = 'newUserAssignmentsList', items = []) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      if (items.length === 0) {
+        addAssignmentRow(containerId, '', 'theoretical');
+      } else {
+        items.forEach(item => addAssignmentRow(containerId, item.subject_id, item.section));
+      }
+    }
+
+    function collectAssignmentRows(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return [];
+      const rows = [...container.querySelectorAll('.assignment-row')];
+      const result = [];
+      const seen = new Set();
+
+      for (const row of rows) {
+        const subject_id = row.querySelector('.assign-sub-select').value;
+        const section = row.querySelector('.assign-sec-select').value;
+        if (!subject_id) {
+          alert('يرجى اختيار المادة الدراسية في جميع صفوف المقررات أو حذف الصف الفارغ.');
+          return null;
+        }
+        if (seen.has(subject_id)) {
+          alert('تم تكرار نفس المادة في قائمة هذا المدرس! إذا أردت منحه القسمين معاً لنفس المادة، اختر "كلا القسمين (نظري وعملي)".');
+          return null;
+        }
+        seen.add(subject_id);
+        result.push({ subject_id, section });
+      }
+      if (result.length === 0) {
+        alert('يجب إسناد مقرر واحد على الأقل للمدرس.');
+        return null;
+      }
+      return result;
+    }
+
+    // --- إدارة الحسابات ---
     function setupUsersTabUI() {
       const title = document.getElementById('createUserFormTitle');
-      const teacherFields = document.getElementById('newUserTeacherFields');
+      const assignBox = document.getElementById('newUserTeacherAssignmentsBox');
       const btn = document.getElementById('createUserBtn');
+      const listHeading = document.getElementById('usersListHeading');
 
       if (isSuperAdmin()) {
         title.innerHTML = '<i class="fa-solid fa-user-plus ml-1"></i> إنشاء حساب "موظف مسؤول" جديد';
-        teacherFields.classList.add('hidden');
+        assignBox.classList.add('hidden');
         btn.textContent = 'إنشاء حساب موظف مسؤول';
+        listHeading.innerHTML = '<i class="fa-solid fa-users ml-1"></i> حسابات الموظفين المسؤولين';
       } else if (isStaff()) {
-        title.innerHTML = '<i class="fa-solid fa-chalkboard-user ml-1"></i> إنشاء حساب "مدرس" لمادة وقسم محددين';
-        teacherFields.classList.remove('hidden');
-        btn.textContent = 'إنشاء حساب المدرس';
-        populateSubjectDropdowns();
+        title.innerHTML = '<i class="fa-solid fa-chalkboard-user ml-1"></i> إنشاء حساب "مدرس" وإسناد المقررات';
+        assignBox.classList.remove('hidden');
+        btn.textContent = 'إنشاء حساب المدرس وحفظ التكليفات';
+        listHeading.innerHTML = '<i class="fa-solid fa-users ml-1"></i> حسابات المدرسين وتوزيع مقرراتهم';
+        const listEl = document.getElementById('newUserAssignmentsList');
+        if (listEl && listEl.children.length === 0) {
+          resetAssignmentRows('newUserAssignmentsList');
+        } else if (listEl) {
+          listEl.querySelectorAll('.assign-sub-select').forEach(sel => {
+            const cur = sel.value;
+            sel.innerHTML = buildSubjectOptionsHtml(cur);
+          });
+        }
       }
     }
 
@@ -1666,8 +1784,7 @@
       const btn = document.getElementById('createUserBtn');
 
       const role = isSuperAdmin() ? 'staff' : 'teacher';
-      const subject_id = role === 'teacher' ? document.getElementById('newUserSubjectId').value : null;
-      const section = role === 'teacher' ? document.getElementById('newUserSection').value : null;
+      let assignments = [];
 
       if (!full_name || !email || !password) {
         return alert('يرجى تعبئة الاسم الكامل والبريد الإلكتروني وكلمة المرور.');
@@ -1675,8 +1792,10 @@
       if (password.length < 6) {
         return alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل.');
       }
-      if (role === 'teacher' && (!subject_id || !section)) {
-        return alert('يرجى اختيار المادة الدراسية والقسم المخصص للمدرس.');
+
+      if (role === 'teacher') {
+        assignments = collectAssignmentRows('newUserAssignmentsList');
+        if (!assignments) return;
       }
 
       const prevBtnText = btn.textContent;
@@ -1689,18 +1808,18 @@
           p_password: password,
           p_full_name: full_name,
           p_role: role,
-          p_subject_id: subject_id,
-          p_section: section
+          p_assignments: assignments
         });
         if (error) throw error;
 
         document.getElementById('newUserName').value = '';
         document.getElementById('newUserEmail').value = '';
         document.getElementById('newUserPass').value = '';
+        if (role === 'teacher') resetAssignmentRows('newUserAssignmentsList');
 
-        await loadManagedUsers();
+        await loadRoleData();
         renderUsersList();
-        alert(`تم إنشاء حساب ${role === 'staff' ? 'الموظف المسؤول' : 'المدرس'} بنجاح وتفعيله فوراً!`);
+        alert(`تم إنشاء حساب ${role === 'staff' ? 'الموظف المسؤول' : 'المدرس'} بنجاح!`);
       } catch (err) {
         alert('خطأ في إنشاء الحساب: ' + err.message);
       } finally {
@@ -1711,53 +1830,60 @@
 
     function renderUsersList() {
       const container = document.getElementById('usersListContainer');
-      if (!container) return;
+      if (!container || !currentProfile) return;
 
       const list = isSuperAdmin()
-        ? managedUsers
+        ? managedUsers.filter(u => u.role === 'staff')
         : managedUsers.filter(u => u.role === 'teacher');
 
       if (list.length === 0) {
-        container.innerHTML = `<p class="text-xs text-slate-500">لا توجد حسابات مسجلة حالياً.</p>`;
+        container.innerHTML = `<p class="text-xs text-slate-500">لا توجد حسابات مسجلة في هذا القسم حالياً.</p>`;
         return;
       }
 
       container.innerHTML = list.map(u => {
-        const isSelf = currentUser && u.id === currentUser.id;
-        const sub = u.subject_id ? subjects.find(s => s.id === u.subject_id) : null;
-        const badgeColor = u.role === 'super_admin'
-          ? 'bg-emerald-100 text-hamaGreen border-emerald-200'
-          : (u.role === 'staff' ? 'bg-blue-100 text-blue-800 border-blue-200' : 'bg-amber-100 text-amber-900 border-amber-200');
+        const teacherAssigns = u.role === 'teacher'
+          ? allTeacherAssignments.filter(a => a.teacher_id === u.id)
+          : [];
+        const badgeColor = u.role === 'staff'
+          ? 'bg-blue-100 text-blue-800 border-blue-200'
+          : 'bg-amber-100 text-amber-900 border-amber-200';
 
         return `
-          <div class="bg-white border rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-            <div class="space-y-1">
+          <div class="bg-white border rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div class="space-y-1.5 flex-1">
               <div class="flex flex-wrap items-center gap-1.5">
                 <span class="font-bold text-sm text-slate-800">${u.full_name}</span>
-                <span class="px-2 py-0.5 rounded-full border font-bold ${badgeColor}">
-                  ${u.role === 'teacher' ? `مدرس (${sectionLabels[u.section] || ''})` : roleLabels[u.role]}
-                </span>
-                ${isSelf ? `<span class="px-2 py-0.5 rounded-full bg-slate-200 text-slate-700 font-bold">حسابك الحالي</span>` : ''}
+                <span class="px-2 py-0.5 rounded-full border font-bold ${badgeColor}">${roleLabels[u.role]}</span>
               </div>
               <div class="text-slate-500 font-mono" dir="ltr">${u.email}</div>
+
               ${u.role === 'teacher' ? `
-                <div class="text-hamaBrown font-bold">
-                  <i class="fa-solid fa-book ml-1"></i> ${sub ? formatSubjectFullLabel(sub) : 'المادة غير محددة'} — ${sectionLabels[u.section] || ''}
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  ${teacherAssigns.length === 0 ? `<span class="text-red-600 font-bold">لا توجد مقررات مسندة</span>` :
+                    teacherAssigns.map(a => {
+                      const sub = subjects.find(s => s.id === a.subject_id);
+                      const secColor = a.section === 'theoretical'
+                        ? 'bg-emerald-50 text-hamaGreen border-emerald-200'
+                        : (a.section === 'practical' ? 'bg-amber-50 text-hamaBrown border-amber-200' : 'bg-indigo-50 text-indigo-800 border-indigo-200');
+                      return `
+                        <span class="px-2 py-1 rounded-lg border font-bold ${secColor}">
+                          <i class="fa-solid fa-book ml-1"></i>${sub ? formatSubjectFullLabel(sub) : 'مادة محذوفة'} — ${assignmentSectionLabels[a.section] || a.section}
+                        </span>
+                      `;
+                    }).join('')
+                  }
                 </div>
               ` : ''}
             </div>
 
             <div class="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
-              ${(isSuperAdmin() || (isStaff() && u.role === 'teacher')) ? `
-                <button onclick="openEditUserModal('${u.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-2.5 py-1.5 rounded-lg font-bold">
-                  <i class="fa-solid fa-pen-to-square"></i> تعديل
-                </button>
-              ` : ''}
-              ${(!isSelf && u.role !== 'super_admin' && (isSuperAdmin() || (isStaff() && u.role === 'teacher'))) ? `
-                <button onclick="deleteUserAccount('${u.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-2.5 py-1.5 rounded-lg font-bold">
-                  <i class="fa-solid fa-trash"></i> حذف
-                </button>
-              ` : ''}
+              <button onclick="openEditUserModal('${u.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-3 py-1.5 rounded-lg font-bold">
+                <i class="fa-solid fa-pen-to-square"></i> تعديل
+              </button>
+              <button onclick="deleteUserAccount('${u.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-3 py-1.5 rounded-lg font-bold">
+                <i class="fa-solid fa-trash"></i> حذف
+              </button>
             </div>
           </div>
         `;
@@ -1768,48 +1894,49 @@
       const u = managedUsers.find(x => x.id === userId);
       if (!u) return;
 
-      const subOptions = subjects.map(s => `<option value="${s.id}">${formatSubjectFullLabel(s)}</option>`).join('');
-
-      document.getElementById('editModalTitle').innerHTML = `<i class="fa-solid fa-user-pen"></i> تعديل حساب: ${u.full_name}`;
+      document.getElementById('editModalTitle').innerHTML = `<i class="fa-solid fa-user-pen"></i> تعديل الحساب: ${u.full_name}`;
       document.getElementById('editModalBody').innerHTML = `
-        <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">الاسم الكامل:</label>
-          <input type="text" id="editUserName" class="w-full border rounded-lg px-3 py-2 text-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">الاسم الكامل:</label>
+            <input type="text" id="editUserName" class="w-full border rounded-lg px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">البريد الإلكتروني:</label>
+            <input type="email" id="editUserEmail" dir="ltr" class="w-full border rounded-lg px-3 py-2 text-sm text-left">
+          </div>
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">البريد الإلكتروني:</label>
-          <input type="email" id="editUserEmail" dir="ltr" class="w-full border rounded-lg px-3 py-2 text-sm text-left">
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">كلمة مرور جديدة (اتركه فارغاً للإبقاء على الحالية):</label>
+          <label class="block text-xs font-bold text-slate-600 mb-1">كلمة مرور جديدة (اتركها فارغة للإبقاء على الحالية):</label>
           <input type="password" id="editUserPass" placeholder="6 أحرف فأكثر عند التغيير" class="w-full border rounded-lg px-3 py-2 text-sm">
         </div>
         ${u.role === 'teacher' ? `
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 space-y-2">
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">المادة الدراسية المخصصة:</label>
-              <select id="editUserSubjectId" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">${subOptions}</select>
+          <div class="bg-amber-50 p-3.5 rounded-xl border border-amber-200 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <label class="text-xs sm:text-sm font-bold text-slate-800">
+                <i class="fa-solid fa-book-bookmark text-hamaBrown ml-1"></i> تعديل المقررات والأقسام الموكلة للمدرس:
+              </label>
+              <button type="button" onclick="addAssignmentRow('editUserAssignmentsList')" class="text-xs bg-hamaGreen hover:bg-emerald-700 text-white px-2.5 py-1.5 rounded-lg font-bold flex items-center gap-1">
+                <i class="fa-solid fa-plus"></i> إضافة مقرر جديد
+              </button>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">القسم المخصص حصراً:</label>
-              <select id="editUserSection" class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                <option value="theoretical">مدرس قسم نظري</option>
-                <option value="practical">مدرس قسم عملي</option>
-              </select>
-            </div>
+            <div id="editUserAssignmentsList" class="space-y-2"></div>
           </div>
         ` : ''}
         <div class="flex gap-2 pt-2">
-          <button id="saveUserEditBtn" onclick="saveEditUser('${u.id}')" class="flex-1 bg-hamaGreen hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-sm">حفظ التعديلات</button>
-          <button onclick="closeEditModal()" class="px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 rounded-lg text-sm">إلغاء</button>
+          <button id="saveUserEditBtn" onclick="saveEditUser('${u.id}')" class="flex-1 bg-hamaGreen hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm">حفظ التعديلات والصلاحيات</button>
+          <button onclick="closeEditModal()" class="px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-lg text-sm">إلغاء</button>
         </div>
       `;
 
       document.getElementById('editUserName').value = u.full_name || '';
       document.getElementById('editUserEmail').value = u.email || '';
+
       if (u.role === 'teacher') {
-        if (u.subject_id) document.getElementById('editUserSubjectId').value = u.subject_id;
-        if (u.section) document.getElementById('editUserSection').value = u.section;
+        const existingAssigns = allTeacherAssignments
+          .filter(a => a.teacher_id === u.id)
+          .map(a => ({ subject_id: a.subject_id, section: a.section }));
+        resetAssignmentRows('editUserAssignmentsList', existingAssigns);
       }
 
       document.getElementById('editModal').classList.remove('hidden');
@@ -1823,12 +1950,16 @@
       const full_name = document.getElementById('editUserName').value.trim();
       const email = document.getElementById('editUserEmail').value.trim();
       const password = document.getElementById('editUserPass').value;
-      const subject_id = u.role === 'teacher' ? document.getElementById('editUserSubjectId').value : null;
-      const section = u.role === 'teacher' ? document.getElementById('editUserSection').value : null;
       const btn = document.getElementById('saveUserEditBtn');
 
       if (!full_name || !email) return alert('يرجى كتابة الاسم والبريد الإلكتروني.');
       if (password && password.length < 6) return alert('كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل.');
+
+      let assignments = null;
+      if (u.role === 'teacher') {
+        assignments = collectAssignmentRows('editUserAssignmentsList');
+        if (!assignments) return;
+      }
 
       btn.disabled = true;
       btn.textContent = 'جاري الحفظ...';
@@ -1839,21 +1970,19 @@
           p_email: email,
           p_password: password || null,
           p_full_name: full_name,
-          p_subject_id: subject_id,
-          p_section: section
+          p_assignments: assignments
         });
         if (error) throw error;
 
         closeEditModal();
-        await loadUserProfile();
+        await loadRoleData();
         renderUsersList();
-        updateAdminView(null, null, 'users');
-        alert('تم تحديث بيانات الحساب بنجاح!');
+        alert('تم تحديث بيانات الحساب والصلاحيات بنجاح!');
       } catch (err) {
         alert('خطأ في التعديل: ' + err.message);
       } finally {
         btn.disabled = false;
-        btn.textContent = 'حفظ التعديلات';
+        btn.textContent = 'حفظ التعديلات والصلاحيات';
       }
     }
 
@@ -1864,7 +1993,7 @@
       try {
         const { error } = await sb.rpc('admin_delete_user', { p_user_id: userId });
         if (error) throw error;
-        await loadManagedUsers();
+        await loadRoleData();
         renderUsersList();
         alert('تم حذف الحساب بنجاح.');
       } catch (err) {
@@ -2169,8 +2298,9 @@
     }
 
     async function addLecture() {
-      const subject_id = isTeacher() ? currentProfile.subject_id : document.getElementById('lecSubjectId').value;
-      const category = isTeacher() ? currentProfile.section : document.getElementById('lecCat').value;
+      if (!isTeacher()) return alert('رفع المحاضرات مخصص لحسابات المدرسين فقط.');
+      const subject_id = document.getElementById('lecSubjectId').value;
+      const category = document.getElementById('lecCat').value;
       const title = document.getElementById('lecTitle').value.trim();
       const rawNum = document.getElementById('lecNum').value.trim();
       const lecture_date = document.getElementById('lecDate').value;
@@ -2178,10 +2308,11 @@
       const file = fileInput.files[0];
       const btn = document.getElementById('addLecBtn');
 
+      if (!subject_id) return alert('يرجى اختيار المادة المسندة لك.');
       if (!canManageLecture(subject_id, category)) {
         return alert('ليس لديك صلاحية رفع محاضرات في هذه المادة أو هذا القسم.');
       }
-      if (!subject_id) return alert('يرجى إضافة مادة دراسية أولاً!');
+
       const lecture_number = validateLectureInput({ subject_id, category, rawNum, title });
       if (!lecture_number) return;
       if (!file) return alert('يرجى اختيار ملف PDF أو صورة.');
@@ -2350,13 +2481,9 @@
       const container = document.getElementById('adminManageContainer');
       if (!container || !currentProfile) return;
 
-      const visibleLectures = isTeacher()
-        ? lectures.filter(l => l.subject_id === currentProfile.subject_id && l.category === currentProfile.section)
-        : lectures;
-
       let html = `<div class="space-y-6">`;
 
-      if (canManageSubjectsAndAnnouncements()) {
+      if (isStaff()) {
         html += `
           <div class="border rounded-xl p-4 bg-slate-50">
             <h4 class="font-bold text-hamaBrown mb-3"><i class="fa-solid fa-bullhorn ml-1"></i> الإعلانات المنشورة (${announcements.length})</h4>
@@ -2384,7 +2511,7 @@
           <div class="border rounded-xl p-4 bg-slate-50">
             <h4 class="font-bold text-hamaGreen mb-3"><i class="fa-solid fa-book ml-1"></i> المواد الدراسية (${subjects.length})</h4>
             ${subjects.length === 0 ? `<p class="text-xs text-slate-500">لا توجد مواد مسجلة.</p>` : `
-              <div class="space-y-2 max-h-48 overflow-y-auto pr-1">
+              <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
                 ${subjects.map(sub => `
                   <div class="bg-white border rounded-lg p-2.5 flex items-center justify-between gap-2 text-xs">
                     <div class="truncate">
@@ -2402,14 +2529,14 @@
         `;
       }
 
-      // المحاضرات تظهر فقط للمدير العام أو المدرس (مخفية عن الموظف المسؤول)
-      if (isSuperAdmin() || isTeacher()) {
+      if (isTeacher()) {
+        const myLectures = lectures.filter(l => canManageLecture(l.subject_id, l.category));
         html += `
           <div class="border rounded-xl p-4 bg-slate-50">
-            <h4 class="font-bold text-slate-700 mb-3"><i class="fa-solid fa-file-pdf ml-1"></i> ${isTeacher() ? 'محاضراتي المرفوعة' : 'المحاضرات المرفوعة'} (${visibleLectures.length})</h4>
-            ${visibleLectures.length === 0 ? `<p class="text-xs text-slate-500">لا توجد محاضرات مرفوعة.</p>` : `
-              <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
-                ${visibleLectures.map(lec => {
+            <h4 class="font-bold text-hamaGreen mb-3"><i class="fa-solid fa-file-pdf ml-1"></i> محاضراتي المرفوعة في مقرراتي المسندة (${myLectures.length})</h4>
+            ${myLectures.length === 0 ? `<p class="text-xs text-slate-500">لا توجد محاضرات مرفوعة في مقرراتك المسندة حالياً.</p>` : `
+              <div class="space-y-2 max-h-72 overflow-y-auto pr-1">
+                ${myLectures.map(lec => {
                   const sub = subjects.find(s => s.id === lec.subject_id);
                   return `
                     <div class="bg-white border rounded-lg p-2.5 flex items-center justify-between gap-2 text-xs">
@@ -2507,6 +2634,9 @@
       if (!lec || !canManageLecture(lec.subject_id, lec.category)) {
         return alert('ليس لديك صلاحية تعديل هذه المحاضرة.');
       }
+      const assign = getTeacherAssignmentForSubject(lec.subject_id);
+      const lockCategory = !assign || assign.section !== 'both';
+
       document.getElementById('editModalTitle').innerHTML = '<i class="fa-solid fa-pen-to-square"></i> تعديل المحاضرة / الملف';
       document.getElementById('editModalBody').innerHTML = `
         <div>
@@ -2520,7 +2650,7 @@
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">القسم (نظري / عملي):</label>
-            <select id="editLecCat" ${isTeacher() ? 'disabled' : ''} class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+            <select id="editLecCat" ${lockCategory ? 'disabled' : ''} class="w-full border rounded-lg px-2 py-2 text-sm bg-white">
               <option value="theoretical">القسم النظري</option>
               <option value="practical">القسم العملي</option>
             </select>
@@ -2564,10 +2694,14 @@
 
       const title = document.getElementById('editLecTitle').value.trim();
       const rawNum = document.getElementById('editLecNum').value.trim();
-      const category = isTeacher() ? currentProfile.section : document.getElementById('editLecCat').value;
+      const category = document.getElementById('editLecCat').value;
       const lecture_date = document.getElementById('editLecDate').value;
       const file = document.getElementById('editLecFile').files[0];
       const btn = document.getElementById('saveLecEditBtn');
+
+      if (!canManageLecture(currentLec.subject_id, category)) {
+        return alert('ليس لديك صلاحية التعديل في هذا القسم.');
+      }
 
       const lecture_number = validateLectureInput({
         subject_id: currentLec.subject_id,
